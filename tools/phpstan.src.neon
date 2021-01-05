@@ -1,0 +1,24 @@
+includes:
+	- phpstan.base.neon
+
+parameters:
+	level: max
+	resultCachePath: %currentWorkingDirectory%/var/tools/PHPStan/resultCache.src.php
+
+	ignoreErrors:
+		# Hard to care about never-happening errors
+		- '#(.+)\|false(.+)#'
+		# Intentionally broken
+		- message: '#^Return type (.+) of method (.+)\:\:setTranslator\(\) should be covariant with (.+)#'
+		  path: ../src/Form/Form.php
+		- message: '#^PHPDoc tag \@throws with type Orisai\\Exceptions\\Logic\\NotImplemented is not compatible with parent$#'
+		  path: ../src/Presenter/Base/BasePresenter.php
+		  count: 2
+		# Layout is string|bool|null, check is correct
+		- message: '#^Strict comparison using === between string and null will always evaluate to false\.$#'
+		  path: ../src/Presenter/Base/BasePresenter.php
+		  count: 1
+		# Same generic typehint, imho should work
+		- message: '#^Parameter \#2 \$renewer of method (.+)BaseFirewall(.+)\:\:__construct\(\) expects (.+)IdentityRenewer\<(.+)Identity\>, (.+)UserIdentityRenewer given\.$#'
+		  path: ../src/Auth/BaseUIFirewall.php
+		  count: 1

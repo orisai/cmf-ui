@@ -1,0 +1,145 @@
+extensions:
+	application: Nette\Bridges\ApplicationDI\ApplicationExtension(%debugMode%)
+	http: Nette\Bridges\HttpDI\HttpExtension(%consoleMode%)
+	latte: Nette\Bridges\ApplicationDI\LatteExtension(%buildDir%/latte, %debugMode%)
+	localization: Orisai\Localization\Bridge\NetteDI\LocalizationExtension
+	session: Nette\Bridges\HttpDI\SessionExtension(%debugMode%, %consoleMode%)
+	- OriCMF\UI\Template\DI\UITemplateExtension
+
+application:
+	catchExceptions: %catchExceptions.ui%
+	debugger: %debug.panels.ui.routes%
+	errorPresenter: OriCMF:UI:ErrorForward
+	mapping:
+		*: ['', *, *\Presenter\*Presenter]
+	scanComposer: false
+	scanDirs: false
+	silentLinks: false
+
+decorator:
+	OriCMF\UI\Presenter\Base\BasePresenter:
+		setup:
+			- injectBase()
+
+http:
+	csp:
+		base-uri: self
+		form-action: self
+		frame-ancestors: none
+	headers:
+		Referrer-Policy: strict-origin-when-cross-origin
+		X-Content-Type-Options: nosniff
+		X-Frame-Options: DENY
+		X-Powered-By: Orisai CMF
+		X-XSS-Protection: '1; mode=block'
+
+latte:
+	strictTypes: true
+
+localization:
+	debug:
+		panel: %debug.panels.localization%
+	loaders:
+		- factory: Orisai\Localization\Resource\FileLoader
+		  arguments:
+		  	directories: [%vendorDir%/orisai/cmf-ui/src/**/translations]
+
+parameters:
+	catchExceptions:
+		ui: false
+	debug:
+		panels:
+			localization: false
+			ui:
+				routes: false
+				session: false
+
+services:
+	# Custom PresenterFactoryCallback
+	application.presenterFactory:
+		arguments: [OriCMF\UI\Presenter\DI\PresenterFactoryCallback()]
+
+	# Document basic controls
+	ori.ui.control.body.factory:
+		implement: OriCMF\UI\Control\Body\BodyFactory
+	ori.ui.control.breadcrumb.factory:
+		implement: OriCMF\UI\Control\Breadcrumb\BreadcrumbFactory
+	ori.ui.control.document.factory:
+		implement: OriCMF\UI\Control\Document\DocumentFactory
+	ori.ui.control.head.factory:
+		implement: OriCMF\UI\Control\Head\HeadFactory
+	ori.ui.control.icons.factory:
+		implement: OriCMF\UI\Control\Icons\IconsFactory
+	ori.ui.control.links.factory:
+		implement: OriCMF\UI\Control\Links\LinksFactory
+	ori.ui.control.meta.factory:
+		implement: OriCMF\UI\Control\Meta\MetaFactory
+	ori.ui.control.noscript.factory:
+		implement: OriCMF\UI\Control\NoScript\NoScriptFactory
+	ori.ui.control.styles.factory:
+		implement: OriCMF\UI\Control\Styles\StylesFactory
+	ori.ui.control.title.factory:
+		implement: OriCMF\UI\Control\Title\TitleFactory
+
+	# Forms
+	ori.ui.form.factory:
+		factory: OriCMF\UI\Form\FormFactory
+
+	# Error forwaring
+	ori.ui.errorForward.presenter:
+		factory: OriCMF\UI\ErrorForward\Presenter\ErrorForwardPresenter
+		setup:
+			- addErrorPresenter(':OriCMF:Admin:Error:default', '#.*:(Admin|Administration):.*#')
+
+	# Auth
+	ori.ui.auth.loginStorage:
+		factory: Orisai\Auth\Bridge\NetteHttp\SessionLoginStorage
+		autowired: false
+	ori.ui.auth.identityRenewer:
+		factory: OriCMF\UI\Auth\UserIdentityRenewer
+		autowired: false
+	ori.ui.auth.authorizerCreator:
+		factory: OriCMF\UI\Auth\UserAuthorizerCreator
+		autowired: false
+	ori.ui.auth.authorizer:
+		factory: @ori.ui.auth.authorizerCreator::create
+		autowired: false
+
+	# Admin
+	ori.ui.admin.auth.firewall:
+		factory: OriCMF\UI\Admin\Auth\AdminFirewall
+		arguments:
+			storage: @ori.ui.auth.loginStorage
+			renewer: @ori.ui.auth.identityRenewer
+			authorizer: @ori.ui.auth.authorizer
+	ori.ui.admin.error.presenter:
+		factory: OriCMF\UI\Admin\Error\Presenter\ErrorPresenter
+	ori.ui.admin.sign.in.presenter:
+		factory: OriCMF\UI\Admin\Sign\In\InPresenter
+
+	# Front
+	ori.ui.front.auth.firewall:
+		factory: OriCMF\UI\Front\Auth\FrontFirewall
+		arguments:
+			storage: @ori.ui.auth.loginStorage
+			renewer: @ori.ui.auth.identityRenewer
+			authorizer: @ori.ui.auth.authorizer
+	ori.ui.front.error.presenter:
+		factory: OriCMF\UI\Front\Error\Presenter\ErrorPresenter
+	ori.ui.front.sign.in.presenter:
+		factory: OriCMF\UI\Front\Sign\In\InPresenter
+
+	# Templates
+	ori.ui.template.locator.control:
+		factory: OriCMF\UI\Template\Locator\ControlTemplateLocator
+	ori.ui.template.locator.presenter:
+		factory: OriCMF\UI\Template\Locator\PresenterTemplateLocator
+
+session:
+	autoStart: smart
+	cookieSamesite: Lax
+	debugger: %debug.panels.ui.session%
+	expiration: 14 days
+	name: SID
+	sid_bits_per_character: 6
+	sid_length: 128

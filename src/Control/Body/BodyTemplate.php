@@ -1,0 +1,13 @@
+<?php declare(strict_types = 1);
+
+namespace OriCMF\UI\Control\Body;
+
+use OriCMF\UI\Control\Base\BaseControlTemplate;
+
+final class BodyTemplate extends BaseControlTemplate
+{
+
+	public string $bodyStart;
+	public string $bodyEnd;
+
+}
