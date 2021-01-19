@@ -3,12 +3,13 @@ extensions:
 	http: Nette\Bridges\HttpDI\HttpExtension(%consoleMode%)
 	latte: Nette\Bridges\ApplicationDI\LatteExtension(%buildDir%/latte, %debugMode%)
 	localization: Orisai\Localization\Bridge\NetteDI\LocalizationExtension
+	routing: OriCMF\UI\Routing\DI\RoutingExtension
 	session: Nette\Bridges\HttpDI\SessionExtension(%debugMode%, %consoleMode%)
 	- OriCMF\UI\Template\DI\UITemplateExtension
 
 application:
 	catchExceptions: %catchExceptions.ui%
-	debugger: %debug.panels.ui.routes%
+	debugger: %debug.panels.ui.application%
 	errorPresenter: OriCMF:UI:ErrorForward
 	mapping:
 		*: ['', *, *\Presenter\*Presenter]
@@ -51,8 +52,14 @@ parameters:
 		panels:
 			localization: false
 			ui:
-				routes: false
+				application: false
+				routing: false
 				session: false
+
+routing:
+	debug: %debug.panels.ui.routing%
+	providers:
+		ori.core: OriCMF\UI\Routing\CoreRouterProvider
 
 services:
 	# Custom PresenterFactoryCallback
@@ -89,7 +96,7 @@ services:
 	ori.ui.errorForward.presenter:
 		factory: OriCMF\UI\ErrorForward\Presenter\ErrorForwardPresenter
 		setup:
-			- addErrorPresenter(':OriCMF:Admin:Error:default', '#.*:(Admin|Administration):.*#')
+			- addErrorPresenter(':OriCMF:UI:Admin:Error:default', '#.*:(Admin|Administration):.*#')
 
 	# Auth
 	ori.ui.auth.loginStorage:

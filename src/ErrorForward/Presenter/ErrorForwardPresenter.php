@@ -18,7 +18,7 @@ final class ErrorForwardPresenter extends BasePresenter
 
 	private LoggerInterface $logger;
 
-	private string $defaultErrorPresenter = ':Orisai:Front:Error:default';
+	private string $defaultErrorPresenter = ':OriCMF:UI:Front:Error:default';
 
 	/** @var array<mixed> */
 	private array $errorPresenters = [];
