@@ -26,7 +26,7 @@ final class UITemplateExtension extends CompilerExtension
 		$templateFactoryDef
 			->addSetup(
 				<<<'PHP'
-?->onCreate[] = static function(\Nette\Application\UI\Template $template): void {
+?->onCreate[] = function(\Nette\Application\UI\Template $template): void {
 	if ($template instanceof \OriCMF\UI\Template\UITemplate) {
 		$template->adminFirewall = ?;
 		$template->frontFirewall = ?;
