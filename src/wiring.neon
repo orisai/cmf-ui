@@ -43,7 +43,7 @@ localization:
 	loaders:
 		- factory: Orisai\Localization\Resource\FileLoader
 		  arguments:
-		  	directories: [%vendorDir%/orisai/cmf-ui/src/**/translations]
+		  	directories: [%vendorDir%/orisai/cmf-ui/src/**/translations/**]
 
 parameters:
 	catchExceptions:
