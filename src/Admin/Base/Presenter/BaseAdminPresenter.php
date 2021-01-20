@@ -17,7 +17,7 @@ abstract class BaseAdminPresenter extends BasePresenter
 
 		$expired = $this->adminFirewall->getExpiredLogins()[0] ?? null;
 		if ($expired !== null && $expired->getLogoutReason() === $this->adminFirewall::REASON_INACTIVITY) {
-			$this->flashMessage($this->translator->translate('ori.login.logout.reason.inactivity'));
+			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
 		$this->redirect('OriCMF:UI:Admin:Sign:in', [

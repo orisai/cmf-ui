@@ -2,7 +2,7 @@
 # Login
 #
 
-ori.login.logout.reason.inactivity: 'You have been signed out due to inactivity.'
+ori.ui.login.logout.reason.inactivity: 'You have been signed out due to inactivity.'
 
 
 #
