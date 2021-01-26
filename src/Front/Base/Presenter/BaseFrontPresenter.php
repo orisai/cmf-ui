@@ -2,6 +2,7 @@
 
 namespace OriCMF\UI\Front\Base\Presenter;
 
+use OriCMF\UI\Front\Sign\Presenter\SignPresenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 
 abstract class BaseFrontPresenter extends BasePresenter
@@ -20,7 +21,7 @@ abstract class BaseFrontPresenter extends BasePresenter
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
-		$this->redirect('OriCMF:UI:Front:Sign:in', [
+		$this->redirect(SignPresenter::ACTION_IN, [
 			'backlink' => $this->storeRequest(),
 		]);
 	}

@@ -18,6 +18,8 @@ final class ErrorPresenter extends BaseAdminPresenter
 
 	use NoLogin;
 
+	public const ACTION_DEFAULT = ':OriCMF:UI:Admin:Error:default';
+
 	protected const SUPPORTED_VIEWS = [400, 403, 404, 410, 500];
 
 	public function actionDefault(): void

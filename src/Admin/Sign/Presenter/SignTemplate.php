@@ -1,10 +1,10 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\Front\Sign\In;
+namespace OriCMF\UI\Admin\Sign\Presenter;
 
 use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 
-final class InTemplate extends BasePresenterTemplate
+class SignTemplate extends BasePresenterTemplate
 {
 
 }

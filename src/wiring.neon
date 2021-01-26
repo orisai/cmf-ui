@@ -120,10 +120,13 @@ services:
 			storage: @ori.ui.auth.loginStorage
 			renewer: @ori.ui.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
+
+	ori.ui.admin.dashboard.presenter:
+		factory: OriCMF\UI\Admin\Dashboard\Presenter\DashboardPresenter
 	ori.ui.admin.error.presenter:
 		factory: OriCMF\UI\Admin\Error\Presenter\ErrorPresenter
-	ori.ui.admin.sign.in.presenter:
-		factory: OriCMF\UI\Admin\Sign\In\InPresenter
+	ori.ui.admin.sign.presenter:
+		factory: OriCMF\UI\Admin\Sign\Presenter\SignPresenter
 
 	# Front
 	ori.ui.front.auth.firewall:
@@ -132,10 +135,13 @@ services:
 			storage: @ori.ui.auth.loginStorage
 			renewer: @ori.ui.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
+
 	ori.ui.front.error.presenter:
 		factory: OriCMF\UI\Front\Error\Presenter\ErrorPresenter
-	ori.ui.front.sign.in.presenter:
-		factory: OriCMF\UI\Front\Sign\In\InPresenter
+	ori.ui.front.homepage.presenter:
+		factory: OriCMF\UI\Front\Homepage\Presenter\HomepagePresenter
+	ori.ui.front.sign.presenter:
+		factory: OriCMF\UI\Front\Sign\Presenter\SignPresenter
 
 	# Templates
 	ori.ui.template.locator.control:

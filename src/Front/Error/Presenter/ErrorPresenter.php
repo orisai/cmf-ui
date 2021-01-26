@@ -18,6 +18,8 @@ final class ErrorPresenter extends BaseFrontPresenter
 
 	use NoLogin;
 
+	public const ACTION_DEFAULT = ':OriCMF:UI:Front:Error:default';
+
 	private const SUPPORTED_VIEWS = [400, 403, 404, 410, 500];
 
 	public function actionDefault(): void
