@@ -64,7 +64,8 @@ routing:
 services:
 	# Custom PresenterFactoryCallback
 	application.presenterFactory:
-		arguments: [OriCMF\UI\Presenter\DI\PresenterFactoryCallback()]
+		arguments:
+			factory: OriCMF\UI\Presenter\DI\PresenterFactoryCallback()
 
 	# Document basic controls
 	ori.ui.control.body.factory:
