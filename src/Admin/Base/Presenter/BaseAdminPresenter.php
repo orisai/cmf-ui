@@ -20,7 +20,7 @@ abstract class BaseAdminPresenter extends BasePresenter
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
-		$this->redirect('OriCMF:UI:Admin:Sign:in', [
+		$this->redirect(':OriCMF:UI:Admin:Sign:In:', [
 			'backlink' => $this->storeRequest(),
 		]);
 	}
