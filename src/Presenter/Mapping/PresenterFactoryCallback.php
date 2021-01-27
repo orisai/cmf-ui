@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\Presenter\DI;
+namespace OriCMF\UI\Presenter\Mapping;
 
 use Nette\Application\InvalidPresenterException;
 use Nette\Application\IPresenter;

@@ -62,10 +62,12 @@ routing:
 		ori.core: OriCMF\UI\Routing\CoreRouterProvider
 
 services:
-	# Custom PresenterFactoryCallback
+	# Presenter factory
 	application.presenterFactory:
+		factory: OriCMF\UI\Presenter\Mapping\PresenterFactory
 		arguments:
-			factory: OriCMF\UI\Presenter\DI\PresenterFactoryCallback()
+			presenterMapper: Nepada\PresenterMapping\PresenterMapper()
+			factory: OriCMF\UI\Presenter\Mapping\PresenterFactoryCallback()
 
 	# Document basic controls
 	ori.ui.control.body.factory:
