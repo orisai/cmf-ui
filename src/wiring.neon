@@ -35,6 +35,7 @@ http:
 		X-XSS-Protection: '1; mode=block'
 
 latte:
+	debugger: %debug.panels.latte%
 	strictTypes: true
 
 localization:
@@ -50,6 +51,7 @@ parameters:
 		ui: false
 	debug:
 		panels:
+			latte: false
 			localization: false
 			ui:
 				application: false
