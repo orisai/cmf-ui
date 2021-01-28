@@ -29,7 +29,7 @@ final class UserIdentityRenewer implements IdentityRenewer
 			return null;
 		}
 
-		$roles = array_map(static fn (Role $role): string => $role->name, $user->roles);
+		$roles = array_map(static fn (Role $role): string => $role->name, $user->roles->getIterator()->fetchAll());
 
 		return new UserIdentity($user->id, $roles);
 	}
