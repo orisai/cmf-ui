@@ -2,7 +2,10 @@
 
 namespace OriCMF\UI\Auth;
 
+use OriCMF\Core\Role\Role;
+use OriCMF\Core\User\User;
 use Orisai\Auth\Authentication\StringIdentity;
+use function array_map;
 
 final class UserIdentity extends StringIdentity
 {
@@ -16,6 +19,13 @@ final class UserIdentity extends StringIdentity
 	{
 		parent::__construct($id, $roles);
 		$this->parentIdentity = $parentIdentity;
+	}
+
+	public static function fromUser(User $user): self
+	{
+		$roles = array_map(static fn (Role $role): string => $role->name, $user->roles->getIterator()->fetchAll());
+
+		return new self($user->id, $roles);
 	}
 
 	/**

@@ -2,11 +2,9 @@
 
 namespace OriCMF\UI\Auth;
 
-use OriCMF\Core\Role\Role;
 use OriCMF\Core\User\UserRepository;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
-use function array_map;
 
 /**
  * @phpstan-implements IdentityRenewer<UserIdentity>
@@ -29,9 +27,7 @@ final class UserIdentityRenewer implements IdentityRenewer
 			return null;
 		}
 
-		$roles = array_map(static fn (Role $role): string => $role->name, $user->roles->getIterator()->fetchAll());
-
-		return new UserIdentity($user->id, $roles);
+		return UserIdentity::fromUser($user);
 	}
 
 }
