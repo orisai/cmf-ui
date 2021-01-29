@@ -25,10 +25,10 @@
 	],
 	"require": {
 		"php": ">=7.4.0",
-		"latte/latte": "^2.9.0",
+		"latte/latte": "^2.10.0",
 		"nepada/presenter-mapping": "^2.3.0",
 		"nette/application": "^3.1.0",
-		"nette/forms": "^3.0.7",
+		"nette/forms": "^3.1.0",
 		"nette/http": "^3.1.0",
 		"orisai/cmf-core": "^1.0.0",
 		"orisai/localization": "^1.0.0"
