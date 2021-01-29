@@ -27,11 +27,8 @@ abstract class BaseControl extends Control
 	{
 		//TODO - $this->templateFactory
 		$templateFactory = $this->getPresenter()->getTemplateFactory();
-		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
 
-		assert($template instanceof Template);
-
-		return $template;
+		return $templateFactory->createTemplate($this, $this->formatTemplateClass());
 	}
 
 	/**

@@ -192,11 +192,8 @@ abstract class BasePresenter extends Presenter
 	protected function createTemplate(): LatteTemplate
 	{
 		$templateFactory = $this->getTemplateFactory();
-		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
 
-		assert($template instanceof LatteTemplate);
-
-		return $template;
+		return $templateFactory->createTemplate($this, $this->formatTemplateClass());
 	}
 
 	/**
