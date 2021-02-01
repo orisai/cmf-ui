@@ -52,7 +52,7 @@ final class ErrorPresenter extends BaseFrontPresenter
 		}
 
 		// Set page title
-		$this['document-head-title']->setMain(
+		$this['document']->setTitle(
 			$this->translator->translate(sprintf(
 				'ori.ui.httpError.%s.title',
 				$view,
@@ -64,7 +64,7 @@ final class ErrorPresenter extends BaseFrontPresenter
 		$this['document-head-meta']->setRobots(['noindex']);
 	}
 
-	protected function configureCanonicalLinks(): void
+	protected function configureCanonicalUrl(): void
 	{
 		// Error presenter has no canonical url
 	}

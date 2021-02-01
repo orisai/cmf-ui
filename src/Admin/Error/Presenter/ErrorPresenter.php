@@ -52,7 +52,7 @@ final class ErrorPresenter extends BaseAdminPresenter
 		}
 
 		// Set page title
-		$this['document-head-title']->setMain(
+		$this['document']->setTitle(
 			$this->translator->translate(sprintf(
 				'ori.ui.httpError.%s.title',
 				$view,
@@ -63,7 +63,7 @@ final class ErrorPresenter extends BaseAdminPresenter
 		$this->setView((string) $view);
 	}
 
-	protected function configureCanonicalLinks(): void
+	protected function configureCanonicalUrl(): void
 	{
 		// Error presenter has no canonical url
 	}

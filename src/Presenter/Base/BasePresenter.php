@@ -89,18 +89,17 @@ abstract class BasePresenter extends Presenter
 
 		$siteName = $this->applicationConfig->getName();
 		if ($siteName !== null) {
-			$this['document-head-title']->setSite($siteName);
-			$this['document-head-meta']->addOpenGraph('site_name', $siteName);
+			$this['document']->setSiteName($siteName);
 		}
 
-		$this->configureCanonicalLinks();
+		$this->configureCanonicalUrl();
 	}
 
-	protected function configureCanonicalLinks(): void
+	protected function configureCanonicalUrl(): void
 	{
-		$link = $this->link('//this', ['backlink' => null]);
-		$this['document-head-links']->addLink($link, 'canonical');
-		$this['document-head-meta']->addOpenGraph('url', $link);
+		$this['document']->setCanonicalUrl(
+			$this->link('//this', ['backlink' => null]),
+		);
 	}
 
 	protected function createComponentDocument(): DocumentControl

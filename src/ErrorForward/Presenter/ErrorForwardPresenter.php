@@ -64,7 +64,7 @@ final class ErrorForwardPresenter extends BasePresenter
 		$this->forward($this->defaultErrorPresenter, ['throwable' => $exception, 'request' => $request]);
 	}
 
-	protected function configureCanonicalLinks(): void
+	protected function configureCanonicalUrl(): void
 	{
 		// Error presenter has no canonical url
 	}
