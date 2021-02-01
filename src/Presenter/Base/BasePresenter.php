@@ -87,6 +87,12 @@ abstract class BasePresenter extends Presenter
 		$this['document']->addAttribute('class', 'no-js');
 		$this['document']->setAttribute('lang', $this->translator->getCurrentLocale()->getTag());
 
+		$siteName = $this->applicationConfig->getName();
+		if ($siteName !== null) {
+			$this['document-head-title']->setSite($siteName);
+			$this['document-head-meta']->addOpenGraph('site_name', $siteName);
+		}
+
 		$this->configureCanonicalLinks();
 	}
 
