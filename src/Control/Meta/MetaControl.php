@@ -37,6 +37,7 @@ class MetaControl extends BaseControl
 
 	/**
 	 * Adds standard meta <meta name="$name" content="$content">
+	 *
 	 * @return $this
 	 */
 	public function addMeta(string $name, string $content): self
@@ -49,6 +50,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Adds application link meta
 	 * <meta property="al:$property" content="$content">
+	 *
 	 * @return $this
 	 */
 	public function addApplicationLink(string $property, string $content): self
@@ -61,6 +63,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Adds open graph meta
 	 * <meta property="og:$property" content="$content">
+	 *
 	 * @return $this
 	 */
 	public function addOpenGraph(string $property, string $content): self
@@ -73,6 +76,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Adds facebook meta
 	 * <meta property="fb:$property" content="$content" />
+	 *
 	 * @return $this
 	 */
 	public function addFacebook(string $property, string $content): self
@@ -85,6 +89,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Adds twitter meta
 	 * <meta name="twitter:$name" content="$content">
+	 *
 	 * @return $this
 	 */
 	public function addTwitter(string $name, string $content): self
@@ -97,6 +102,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Adds httpEquiv meta
 	 * <meta http-equiv="$httpEquiv" content="$content">
+	 *
 	 * @return $this
 	 */
 	public function addHttpEquiv(string $httpEquiv, string $content): self
@@ -109,6 +115,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Sets author meta
 	 * <meta name="author" content="$author">
+	 *
 	 * @return $this
 	 */
 	public function setAuthor(string $author): self
@@ -121,6 +128,7 @@ class MetaControl extends BaseControl
 	/**
 	 * Sets description meta
 	 * <meta name="description" content="$description">
+	 *
 	 * @return $this
 	 */
 	public function setDescription(string $description): self

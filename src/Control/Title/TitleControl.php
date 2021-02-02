@@ -65,6 +65,7 @@ class TitleControl extends BaseControl
 
 	/**
 	 * Display 'Site Module Main' instead of 'Main Module Site'
+	 *
 	 * @return $this
 	 */
 	public function revert(bool $revert = true): self
