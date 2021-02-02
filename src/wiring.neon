@@ -57,6 +57,7 @@ parameters:
 				application: false
 				routing: false
 				session: false
+	privileges: []
 
 routing:
 	debug: %debug.panels.ui.routing%
@@ -113,6 +114,8 @@ services:
 	ori.ui.auth.authorizerCreator:
 		factory: OriCMF\UI\Auth\UserAuthorizerCreator
 		autowired: false
+		setup:
+			- addPrivileges(%privileges%)
 	ori.ui.auth.authorizer:
 		factory: @ori.ui.auth.authorizerCreator::create
 		autowired: false
