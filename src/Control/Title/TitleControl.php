@@ -39,6 +39,11 @@ class TitleControl extends BaseControl
 		return $this;
 	}
 
+	public function getMain(): ?string
+	{
+		return $this->main;
+	}
+
 	public function setSeparator(?string $separator): self
 	{
 		$this->separator = $separator;
