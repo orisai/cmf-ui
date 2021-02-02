@@ -6,6 +6,10 @@ use Nette\Bridges\ApplicationLatte\Template;
 use OriCMF\UI\Admin\Auth\AdminFirewall;
 use OriCMF\UI\Front\Auth\FrontFirewall;
 
+/**
+ * @method bool isLinkCurrent(string $destination = null, array $args = [])
+ * @method bool isModuleCurrent(string $module)
+ */
 abstract class UITemplate extends Template
 {
 
