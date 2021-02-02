@@ -42,6 +42,13 @@ class DocumentControl extends BaseControl
 		return $this;
 	}
 
+	public function removeAttribute(string $name): self
+	{
+		$this->element->removeAttribute($name);
+
+		return $this;
+	}
+
 	public function setCanonicalUrl(string $url): void
 	{
 		$this['head-links']->addLink($url, 'canonical');
