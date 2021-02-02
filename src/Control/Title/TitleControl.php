@@ -21,7 +21,7 @@ class TitleControl extends BaseControl
 	/**
 	 * @return $this
 	 */
-	public function setSite(?string $site): self
+	public function setSite(string $site): self
 	{
 		$this->site = $site;
 
@@ -31,7 +31,7 @@ class TitleControl extends BaseControl
 	/**
 	 * @return $this
 	 */
-	public function setModule(?string $module): self
+	public function setModule(string $module): self
 	{
 		$this->module = $module;
 
@@ -41,7 +41,7 @@ class TitleControl extends BaseControl
 	/**
 	 * @return $this
 	 */
-	public function setMain(?string $main): self
+	public function setMain(string $main): self
 	{
 		$this->main = $main;
 
@@ -56,7 +56,7 @@ class TitleControl extends BaseControl
 	/**
 	 * @return $this
 	 */
-	public function setSeparator(?string $separator): self
+	public function setSeparator(string $separator): self
 	{
 		$this->separator = $separator;
 
