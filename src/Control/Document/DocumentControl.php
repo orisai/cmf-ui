@@ -28,6 +28,9 @@ class DocumentControl extends BaseControl
 		$this->element = Html::el('html');
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function addAttribute(string $name, string $value): self
 	{
 		$this->element->appendAttribute($name, $value);
@@ -35,6 +38,9 @@ class DocumentControl extends BaseControl
 		return $this;
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function setAttribute(string $name, string $value): self
 	{
 		$this->element->setAttribute($name, $value);
@@ -42,6 +48,9 @@ class DocumentControl extends BaseControl
 		return $this;
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function removeAttribute(string $name): self
 	{
 		$this->element->removeAttribute($name);

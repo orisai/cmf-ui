@@ -15,6 +15,7 @@ class NoScriptControl extends BaseControl
 
 	/**
 	 * Add noscript <noscript>{$content|noescape}</noscript>
+	 * @return $this
 	 */
 	public function addNoScript(string $content): self
 	{

@@ -18,6 +18,9 @@ class BodyControl extends BaseControl
 		$this->element = AccountFactory::el('body');
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function addAttribute(string $name, string $value): self
 	{
 		$this->element->appendAttribute($name, $value);
@@ -25,6 +28,9 @@ class BodyControl extends BaseControl
 		return $this;
 	}
 
+	/**
+	 * @return $this
+	 */
 	public function setAttribute(string $name, string $value): self
 	{
 		$this->element->setAttribute($name, $value);

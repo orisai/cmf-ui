@@ -18,6 +18,9 @@ class IconsControl extends BaseControl
 	/** @var array<mixed> */
 	private array $icons = [];
 
+	/**
+	 * @return $this
+	 */
 	public function setFavicon(string $favicon): self
 	{
 		$this->favicon = $favicon;
@@ -27,6 +30,7 @@ class IconsControl extends BaseControl
 
 	/**
 	 * @param array<string> $sizes
+	 * @return $this
 	 */
 	public function addIcon(string $href, array $sizes = [], ?string $type = null, string $rel = 'icon'): self
 	{
@@ -42,6 +46,7 @@ class IconsControl extends BaseControl
 
 	/**
 	 * @param array<string> $sizes
+	 * @return $this
 	 */
 	public function addApple(string $href, array $sizes = []): self
 	{
@@ -52,6 +57,7 @@ class IconsControl extends BaseControl
 
 	/**
 	 * @param array<string> $sizes
+	 * @return $this
 	 */
 	public function addApplePrecomposed(string $href, array $sizes = []): self
 	{

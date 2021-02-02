@@ -30,6 +30,7 @@ class LinksControl extends BaseControl
 	/**
 	 * Adds alternate language
 	 * <link rel="alternate" href="$href" hreflang="$hreflang">
+	 * @return $this
 	 */
 	public function addAlternateLanguage(string $href, string $hreflang): self
 	{
@@ -42,6 +43,7 @@ class LinksControl extends BaseControl
 	 * Adds alternate feed
 	 * <link rel="alternate" href="$href" type="$type" title="$title">
 	 * <link rel="alternate" href="https://feeds.feedburner.com/example" type="application/rss+xml" title="RSS">
+	 * @return $this
 	 */
 	public function addAlternateFeed(string $href, string $type, string $title): self
 	{

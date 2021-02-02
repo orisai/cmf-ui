@@ -13,6 +13,9 @@ class StylesControl extends BaseControl
 	/** @var array<string> */
 	private array $styles = [];
 
+	/**
+	 * @return $this
+	 */
 	public function addStyle(string $href): self
 	{
 		$this->styles[] = $href;
