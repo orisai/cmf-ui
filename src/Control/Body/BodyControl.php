@@ -4,6 +4,7 @@ namespace OriCMF\UI\Control\Body;
 
 use Nette\Utils\Html as AccountFactory;
 use OriCMF\UI\Control\Base\BaseControl;
+use OriCMF\UI\Control\Document\DocumentControl;
 
 /**
  * @property-read BodyTemplate $template
@@ -34,6 +35,16 @@ class BodyControl extends BaseControl
 	public function setAttribute(string $name, string $value): self
 	{
 		$this->element->setAttribute($name, $value);
+
+		return $this;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function removeAttribute(string $name): self
+	{
+		$this->element->removeAttribute($name);
 
 		return $this;
 	}
