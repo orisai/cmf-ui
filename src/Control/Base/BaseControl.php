@@ -40,7 +40,7 @@ abstract class BaseControl extends Control
 		assert(is_string($class));
 
 		if ($class === static::class) {
-			$class .= 'Control';
+			$class .= 'Template';
 		}
 
 		return $this->checkTemplateClass($class);

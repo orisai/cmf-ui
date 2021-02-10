@@ -210,7 +210,7 @@ abstract class BasePresenter extends Presenter
 		assert(is_string($class));
 
 		if ($class === static::class) {
-			$class .= 'Presenter';
+			$class .= 'Template';
 		}
 
 		return $this->checkTemplateClass($class);
