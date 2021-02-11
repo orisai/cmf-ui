@@ -1,15 +1,16 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\Auth;
+namespace OriCMF\UI\Front\Auth;
 
 use OriCMF\Core\User\UserRepository;
+use OriCMF\UI\Auth\UserIdentity;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
 
 /**
  * @phpstan-implements IdentityRenewer<UserIdentity>
  */
-final class UserIdentityRenewer implements IdentityRenewer
+final class FrontIdentityRenewer implements IdentityRenewer
 {
 
 	private UserRepository $userRepository;

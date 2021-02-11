@@ -18,7 +18,7 @@ parameters:
 		- message: '#^Strict comparison using === between string and null will always evaluate to false\.$#'
 		  path: ../src/Presenter/Base/BasePresenter.php
 		  count: 1
-		# Same generic typehint, imho should work
-		- message: '#^Parameter \#2 \$renewer of method (.+)BaseFirewall(.+)\:\:__construct\(\) expects (.+)IdentityRenewer\<(.+)Identity\>, (.+)UserIdentityRenewer given\.$#'
+		# ¯\_(ツ)_/¯
+		- message: '#^Parameter \#2 \$renewer of method (.+)BaseFirewall\<Orisai\\Auth\\Authentication\\Identity\>\:\:__construct\(\) expects Orisai\\Auth\\Authentication\\IdentityRenewer\<Orisai\\Auth\\Authentication\\Identity\>, Orisai\\Auth\\Authentication\\IdentityRenewer\<(.+)UserIdentity\> given\.$#'
 		  path: ../src/Auth/BaseUIFirewall.php
 		  count: 1

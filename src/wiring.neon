@@ -57,7 +57,8 @@ parameters:
 				application: false
 				routing: false
 				session: false
-	privileges: []
+	privileges:
+		- administration.entry
 
 routing:
 	debug: %debug.panels.ui.routing%
@@ -108,9 +109,6 @@ services:
 	ori.ui.auth.loginStorage:
 		factory: Orisai\Auth\Bridge\NetteHttp\SessionLoginStorage
 		autowired: false
-	ori.ui.auth.identityRenewer:
-		factory: OriCMF\UI\Auth\UserIdentityRenewer
-		autowired: false
 	ori.ui.auth.authorizerCreator:
 		factory: OriCMF\UI\Auth\UserAuthorizerCreator
 		autowired: false
@@ -121,11 +119,16 @@ services:
 		autowired: false
 
 	# Admin
+	ori.ui.admin.auth.identityRenewer:
+		factory: OriCMF\UI\Admin\Auth\AdminIdentityRenewer
+		autowired: false
+		arguments:
+			authorizer: @ori.ui.auth.authorizer
 	ori.ui.admin.auth.firewall:
 		factory: OriCMF\UI\Admin\Auth\AdminFirewall
 		arguments:
 			storage: @ori.ui.auth.loginStorage
-			renewer: @ori.ui.auth.identityRenewer
+			renewer: @ori.ui.admin.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
 
 	ori.ui.admin.dashboard.presenter:
@@ -136,11 +139,14 @@ services:
 		factory: OriCMF\UI\Admin\Sign\Presenter\SignPresenter
 
 	# Front
+	ori.ui.front.auth.identityRenewer:
+		factory: OriCMF\UI\Front\Auth\FrontIdentityRenewer
+		autowired: false
 	ori.ui.front.auth.firewall:
 		factory: OriCMF\UI\Front\Auth\FrontFirewall
 		arguments:
 			storage: @ori.ui.auth.loginStorage
-			renewer: @ori.ui.auth.identityRenewer
+			renewer: @ori.ui.front.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
 
 	ori.ui.front.error.presenter:
