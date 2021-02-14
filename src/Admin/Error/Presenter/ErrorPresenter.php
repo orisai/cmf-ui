@@ -5,7 +5,6 @@ namespace OriCMF\UI\Admin\Error\Presenter;
 use Nette\Application\BadRequestException;
 use Nette\Http\IResponse;
 use OriCMF\UI\Admin\Base\Presenter\BaseAdminPresenter;
-use OriCMF\UI\Presenter\NoLogin;
 use Throwable;
 use function in_array;
 use function sprintf;
@@ -15,8 +14,6 @@ use function sprintf;
  */
 final class ErrorPresenter extends BaseAdminPresenter
 {
-
-	use NoLogin;
 
 	public const ACTION_DEFAULT = ':OriCMF:UI:Admin:Error:default';
 
