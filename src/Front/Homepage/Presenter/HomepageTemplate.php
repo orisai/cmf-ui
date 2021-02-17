@@ -7,4 +7,6 @@ use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 final class HomepageTemplate extends BasePresenterTemplate
 {
 
+	public HomepagePresenter $control;
+
 }

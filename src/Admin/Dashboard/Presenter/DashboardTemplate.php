@@ -7,4 +7,6 @@ use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 final class DashboardTemplate extends BasePresenterTemplate
 {
 
+	public DashboardPresenter $control;
+
 }

@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class MetaTemplate extends BaseControlTemplate
 {
 
+	public MetaControl $control;
+
 	/** @var array<string> */
 	public array $httpEquivs;
 

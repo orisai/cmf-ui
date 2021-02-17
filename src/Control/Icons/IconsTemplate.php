@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class IconsTemplate extends BaseControlTemplate
 {
 
+	public IconsControl $control;
+
 	public ?string $favicon;
 
 	/** @var array<mixed> */

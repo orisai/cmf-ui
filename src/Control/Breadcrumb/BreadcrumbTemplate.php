@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class BreadcrumbTemplate extends BaseControlTemplate
 {
 
+	public BreadcrumbControl $control;
+
 	/** @var array<mixed> */
 	public array $links;
 

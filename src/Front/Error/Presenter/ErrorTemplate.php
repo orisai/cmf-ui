@@ -7,4 +7,6 @@ use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 final class ErrorTemplate extends BasePresenterTemplate
 {
 
+	public ErrorPresenter $control;
+
 }

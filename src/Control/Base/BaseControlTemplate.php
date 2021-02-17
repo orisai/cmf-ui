@@ -11,8 +11,6 @@ abstract class BaseControlTemplate extends UITemplate
 	private ControlTemplateLocator $templateLocator;
 	private string $view = 'default';
 
-	public BaseControl $control;
-
 	public function setView(string $view): void
 	{
 		$this->view = $view;

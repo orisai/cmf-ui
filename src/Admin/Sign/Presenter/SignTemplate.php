@@ -7,4 +7,6 @@ use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 class SignTemplate extends BasePresenterTemplate
 {
 
+	public SignPresenter $control;
+
 }

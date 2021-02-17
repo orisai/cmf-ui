@@ -7,6 +7,4 @@ use OriCMF\UI\Template\UITemplate;
 abstract class BasePresenterTemplate extends UITemplate
 {
 
-	public BasePresenter $control;
-
 }

@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class NoScriptTemplate extends BaseControlTemplate
 {
 
+	public NoScriptControl $control;
+
 	/** @var array<string> */
 	public array $noScripts;
 

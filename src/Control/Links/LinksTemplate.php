@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class LinksTemplate extends BaseControlTemplate
 {
 
+	public LinksControl $control;
+
 	/** @var array<string> */
 	public array $links;
 

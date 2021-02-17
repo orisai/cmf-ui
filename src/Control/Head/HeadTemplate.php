@@ -7,4 +7,6 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class HeadTemplate extends BaseControlTemplate
 {
 
+	public HeadControl $control;
+
 }

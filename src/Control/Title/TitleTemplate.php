@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class TitleTemplate extends BaseControlTemplate
 {
 
+	public TitleControl $control;
+
 	public ?string $title;
 
 }

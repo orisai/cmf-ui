@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class DocumentTemplate extends BaseControlTemplate
 {
 
+	public DocumentControl $control;
+
 	public string $documentStart;
 	public string $documentEnd;
 

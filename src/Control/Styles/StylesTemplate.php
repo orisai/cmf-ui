@@ -7,6 +7,8 @@ use OriCMF\UI\Control\Base\BaseControlTemplate;
 final class StylesTemplate extends BaseControlTemplate
 {
 
+	public StylesControl $control;
+
 	/** @var array<string> */
 	public array $styles;
 
