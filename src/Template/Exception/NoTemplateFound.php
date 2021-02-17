@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Template\Exception;
 
 use Orisai\Exceptions\LogicalException;
+use Webmozart\PathUtil\Path;
 use function get_class;
 use function implode;
 
@@ -12,17 +13,24 @@ final class NoTemplateFound extends LogicalException
 	/** @var array<string> */
 	public array $triedPaths;
 
+	/** @var array<string> */
+	public array $shortTriedPaths;
+
 	/**
 	 * @param array<string> $triedPaths
 	 */
-	public static function create(array $triedPaths, object $templatedObject): self
+	public static function create(array $triedPaths, object $templatedObject, string $rootDir): self
 	{
 		$templatedClass = get_class($templatedObject);
-		$inlinePaths = implode(', ', $triedPaths);
+
+		$shortTriedPaths = self::getShortPaths($triedPaths, $rootDir);
+		$inlinePaths = implode(', ', $shortTriedPaths);
+
 		$message = "Template of {$templatedClass} not found. None of the following templates exists: {$inlinePaths}";
 
 		$self = new self();
 		$self->triedPaths = $triedPaths;
+		$self->shortTriedPaths = $shortTriedPaths;
 		$self->withMessage($message);
 
 		return $self;
@@ -34,6 +42,28 @@ final class NoTemplateFound extends LogicalException
 	public function getTriedPaths(): array
 	{
 		return $this->triedPaths;
+	}
+
+	/**
+	 * @return array<string>
+	 */
+	public function getShortTriedPaths(): array
+	{
+		return $this->shortTriedPaths;
+	}
+
+	/**
+	 * @param array<string>  $paths
+	 * @return array<string>
+	 */
+	private static function getShortPaths(array $paths, string $basePath): array
+	{
+		$short = [];
+		foreach ($paths as $path) {
+			$short[] = Path::makeRelative($path, $basePath);
+		}
+
+		return $short;
 	}
 
 }

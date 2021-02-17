@@ -10,6 +10,13 @@ use function is_file;
 final class ControlTemplateLocator
 {
 
+	private string $rootDir;
+
+	public function __construct(string $rootDir)
+	{
+		$this->rootDir = $rootDir;
+	}
+
 	/**
 	 * @throws NoTemplateFound
 	 */
@@ -33,7 +40,7 @@ final class ControlTemplateLocator
 			$triedPaths[] = $templatePath;
 		}
 
-		throw NoTemplateFound::create($triedPaths, $control);
+		throw NoTemplateFound::create($triedPaths, $control, $this->rootDir);
 	}
 
 }

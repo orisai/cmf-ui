@@ -10,6 +10,13 @@ use function is_file;
 final class PresenterTemplateLocator
 {
 
+	private string $rootDir;
+
+	public function __construct(string $rootDir)
+	{
+		$this->rootDir = $rootDir;
+	}
+
 	/**
 	 * @throws NoTemplateFound
 	 */
@@ -50,7 +57,7 @@ final class PresenterTemplateLocator
 			$triedPaths[] = $templatePath;
 		}
 
-		throw NoTemplateFound::create($triedPaths, $presenter);
+		throw NoTemplateFound::create($triedPaths, $presenter, $this->rootDir);
 	}
 
 }
