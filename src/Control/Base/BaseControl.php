@@ -7,6 +7,7 @@ use Nette\Application\UI\Template as PlainTemplate;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use Orisai\Exceptions\Logic\InvalidState;
 use Orisai\Exceptions\Message;
+use Orisai\Localization\Translator;
 use function assert;
 use function class_exists;
 use function is_string;
@@ -21,6 +22,13 @@ use function preg_replace;
  */
 abstract class BaseControl extends Control
 {
+
+	protected Translator $translator;
+
+	public function setTranslator(Translator $translator): void
+	{
+		$this->translator = $translator;
+	}
 
 	protected function createTemplate(): BaseControlTemplate
 	{

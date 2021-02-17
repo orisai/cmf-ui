@@ -21,6 +21,9 @@ decorator:
 	OriCMF\UI\Presenter\Base\BasePresenter:
 		setup:
 			- injectBase()
+	OriCMF\UI\Control\Base\BaseControl:
+		setup:
+			- setTranslator()
 
 http:
 	csp:
