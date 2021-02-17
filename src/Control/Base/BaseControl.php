@@ -4,7 +4,6 @@ namespace OriCMF\UI\Control\Base;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Template as PlainTemplate;
-use Nette\Bridges\ApplicationLatte\Template;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use Orisai\Exceptions\Logic\InvalidState;
 use Orisai\Exceptions\Message;
@@ -23,16 +22,18 @@ use function preg_replace;
 abstract class BaseControl extends Control
 {
 
-	protected function createTemplate(): Template
+	protected function createTemplate(): BaseControlTemplate
 	{
 		//TODO - $this->templateFactory
 		$templateFactory = $this->getPresenter()->getTemplateFactory();
+		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
+		assert($template instanceof BaseControlTemplate);
 
-		return $templateFactory->createTemplate($this, $this->formatTemplateClass());
+		return $template;
 	}
 
 	/**
-	 * @return class-string<Template>
+	 * @return class-string<BaseControlTemplate>
 	 */
 	public function formatTemplateClass(): string
 	{
@@ -47,7 +48,7 @@ abstract class BaseControl extends Control
 	}
 
 	/**
-	 * @return class-string<Template>
+	 * @return class-string<BaseControlTemplate>
 	 */
 	protected function checkTemplateClass(string $class): string
 	{
@@ -62,9 +63,9 @@ abstract class BaseControl extends Control
 				->withMessage($message);
 		}
 
-		if (!is_subclass_of($class, Template::class)) {
+		$templateClass = BaseControlTemplate::class;
+		if (!is_subclass_of($class, $templateClass)) {
 			$self = static::class;
-			$templateClass = Template::class;
 			$message = Message::create()
 				->withContext("Trying to create template for {$self}.")
 				->withProblem("Class {$class} is not subclass of {$templateClass}.")

@@ -7,7 +7,6 @@ use Nette\Application\BadRequestException;
 use Nette\Application\Responses\TextResponse;
 use Nette\Application\UI\Presenter;
 use Nette\Application\UI\Template;
-use Nette\Bridges\ApplicationLatte\Template as LatteTemplate;
 use Nette\Bridges\ApplicationLatte\TemplateFactory;
 use Nette\FileNotFoundException;
 use OriCMF\Core\Config\ApplicationConfig;
@@ -194,15 +193,17 @@ abstract class BasePresenter extends Presenter
 		$this->sendResponse(new TextResponse($template));
 	}
 
-	protected function createTemplate(): LatteTemplate
+	protected function createTemplate(): BasePresenterTemplate
 	{
 		$templateFactory = $this->getTemplateFactory();
+		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
+		assert($template instanceof BasePresenterTemplate);
 
-		return $templateFactory->createTemplate($this, $this->formatTemplateClass());
+		return $template;
 	}
 
 	/**
-	 * @return class-string<LatteTemplate>
+	 * @return class-string<BasePresenterTemplate>
 	 */
 	public function formatTemplateClass(): string
 	{
@@ -217,7 +218,7 @@ abstract class BasePresenter extends Presenter
 	}
 
 	/**
-	 * @return class-string<LatteTemplate>
+	 * @return class-string<BasePresenterTemplate>
 	 */
 	protected function checkTemplateClass(string $class): string
 	{
@@ -232,9 +233,9 @@ abstract class BasePresenter extends Presenter
 				->withMessage($message);
 		}
 
-		if (!is_subclass_of($class, LatteTemplate::class)) {
+		$templateClass = BasePresenterTemplate::class;
+		if (!is_subclass_of($class, $templateClass)) {
 			$self = static::class;
-			$templateClass = LatteTemplate::class;
 			$message = Message::create()
 				->withContext("Trying to create template for {$self}.")
 				->withProblem("Class {$class} is not subclass of {$templateClass}.")
