@@ -24,9 +24,9 @@ final class NoTemplateFound extends LogicalException
 		$templatedClass = get_class($templatedObject);
 
 		$shortTriedPaths = self::getShortPaths($triedPaths, $rootDir);
-		$inlinePaths = implode(', ', $shortTriedPaths);
+		$inlinePaths = implode("\n", $shortTriedPaths);
 
-		$message = "Template of {$templatedClass} not found. None of the following templates exists: {$inlinePaths}";
+		$message = "Template of {$templatedClass} not found. None of the following templates exists:\n{$inlinePaths}";
 
 		$self = new self();
 		$self->triedPaths = $triedPaths;
