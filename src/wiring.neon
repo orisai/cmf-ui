@@ -20,7 +20,7 @@ application:
 decorator:
 	OriCMF\UI\Control\Base\BaseControl:
 		setup:
-			- setTranslator()
+			- setBase()
 
 http:
 	csp:

@@ -4,6 +4,7 @@ namespace OriCMF\UI\Control\Base;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Template as PlainTemplate;
+use OriCMF\UI\Form\FormFactory;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use Orisai\Exceptions\Logic\InvalidState;
 use Orisai\Exceptions\Message;
@@ -24,10 +25,12 @@ abstract class BaseControl extends Control
 {
 
 	protected Translator $translator;
+	protected FormFactory $formFactory;
 
-	public function setTranslator(Translator $translator): void
+	public function setBase(Translator $translator, FormFactory $formFactory): void
 	{
 		$this->translator = $translator;
+		$this->formFactory = $formFactory;
 	}
 
 	protected function createTemplate(): BaseControlTemplate
