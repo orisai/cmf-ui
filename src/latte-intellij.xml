@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE latte PUBLIC "-//LATTE//Latte plugin XML V0.0.1//EN" ".idea/intellij-latte/xmlSources/Latte.dtd">
+<latte version="1" vendor="orisai/cmf-ui">
+	<tags>
+		<tag name="alink" type="UNPAIRED" arguments="OriCMF\UI\Presenter\ActionLink"/>
+	</tags>
+</latte>

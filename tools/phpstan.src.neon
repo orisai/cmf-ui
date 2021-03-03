@@ -22,3 +22,6 @@ parameters:
 		- message: '#^Parameter \#2 \$renewer of method (.+)BaseFirewall\<Orisai\\Auth\\Authentication\\Identity\>\:\:__construct\(\) expects Orisai\\Auth\\Authentication\\IdentityRenewer\<Orisai\\Auth\\Authentication\\Identity\>, Orisai\\Auth\\Authentication\\IdentityRenewer\<(.+)UserIdentity\> given\.$#'
 		  path: ../src/Auth/BaseUIFirewall.php
 		  count: 1
+		- message: '#^Only booleans are allowed in a ternary operator condition, int given\.$#'
+		  path: ../src/Template/UIMacros.php
+		  count: 1

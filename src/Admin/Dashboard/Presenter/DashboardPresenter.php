@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Admin\Dashboard\Presenter;
 
 use OriCMF\UI\Admin\Base\Presenter\BaseAdminPresenter;
+use OriCMF\UI\Presenter\ActionLink;
 
 /**
  * @property-read DashboardTemplate $template
@@ -15,6 +16,11 @@ final class DashboardPresenter extends BaseAdminPresenter
 	public function actionDefault(): void
 	{
 
+	}
+
+	public static function linkDefault(): ActionLink
+	{
+		return new ActionLink(self::ACTION_DEFAULT);
 	}
 
 }
