@@ -11,7 +11,7 @@ use OriCMF\UI\Admin\Sign\Presenter\SignPresenter as AdminSignPresenter;
 use OriCMF\UI\Front\Error\Presenter\ErrorPresenter as FrontErrorPresenter;
 use OriCMF\UI\Front\Homepage\Presenter\HomepagePresenter;
 use OriCMF\UI\Front\Sign\Presenter\SignPresenter as FrontSignPresenter;
-use function ltrim;
+use function substr;
 
 final class CoreRouterProvider implements RouterProvider
 {
@@ -20,15 +20,15 @@ final class CoreRouterProvider implements RouterProvider
 	{
 		$router = new RouteList();
 
-		$router[] = new Route('/admin/sign/in', ltrim(AdminSignPresenter::ACTION_IN, ':'));
-		$router[] = new Route('/admin/sign/out', ltrim(AdminSignPresenter::ACTION_OUT, ':'));
-		$router[] = new Route('/admin/error', ltrim(AdminErrorPresenter::ACTION_DEFAULT, ':'));
-		$router[] = new Route('/admin', ltrim(DashboardPresenter::ACTION_DEFAULT, ':'));
+		$router[] = new Route('/admin/sign/in', substr(AdminSignPresenter::ACTION_IN, 1));
+		$router[] = new Route('/admin/sign/out', substr(AdminSignPresenter::ACTION_OUT, 1));
+		$router[] = new Route('/admin/error', substr(AdminErrorPresenter::ACTION_DEFAULT, 1));
+		$router[] = new Route('/admin', substr(DashboardPresenter::ACTION_DEFAULT, 1));
 
-		$router[] = new Route('/sign/in', ltrim(FrontSignPresenter::ACTION_IN, ':'));
-		$router[] = new Route('/sign/out', ltrim(FrontSignPresenter::ACTION_OUT, ':'));
-		$router[] = new Route('/error', ltrim(FrontErrorPresenter::ACTION_DEFAULT, ':'));
-		$router[] = new Route('/', ltrim(HomepagePresenter::ACTION_DEFAULT, ':'));
+		$router[] = new Route('/sign/in', substr(FrontSignPresenter::ACTION_IN, 1));
+		$router[] = new Route('/sign/out', substr(FrontSignPresenter::ACTION_OUT, 1));
+		$router[] = new Route('/error', substr(FrontErrorPresenter::ACTION_DEFAULT, 1));
+		$router[] = new Route('/', substr(HomepagePresenter::ACTION_DEFAULT, 1));
 
 		return $router;
 	}

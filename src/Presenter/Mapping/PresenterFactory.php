@@ -3,21 +3,26 @@
 namespace OriCMF\UI\Presenter\Mapping;
 
 use Nepada\PresenterMapping\PresenterFactory as BasePresenterFactory;
-use function ltrim;
+use function str_starts_with;
+use function substr;
 
 final class PresenterFactory extends BasePresenterFactory
 {
 
 	public function getPresenterClass(string &$name): string
 	{
-		$name = ltrim($name, ':');
+		if (str_starts_with($name, ':')) {
+			$name = substr($name, 1);
+		}
 
 		return parent::getPresenterClass($name);
 	}
 
 	public function formatPresenterClass(string $presenter): string
 	{
-		$presenter = ltrim($presenter, ':');
+		if (str_starts_with($presenter, ':')) {
+			$presenter = substr($presenter, 1);
+		}
 
 		return parent::formatPresenterClass($presenter);
 	}
