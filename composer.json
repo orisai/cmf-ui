@@ -24,7 +24,7 @@
 		}
 	],
 	"require": {
-		"php": ">=7.4.0",
+		"php": ">=8.0.0",
 		"latte/latte": "^2.10.0",
 		"nepada/presenter-mapping": "^2.3.0",
 		"nette/application": "^3.1.0",
