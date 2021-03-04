@@ -14,7 +14,7 @@ final class ActionLink
 	private array $args;
 
 	/**
-	 * @param array<mixed> $args
+	 * @param array<string, mixed> $args
 	 */
 	public function __construct(string $destination, array $args = [])
 	{
