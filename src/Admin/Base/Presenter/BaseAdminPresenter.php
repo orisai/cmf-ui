@@ -21,9 +21,9 @@ abstract class BaseAdminPresenter extends BasePresenter
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
-		$this->redirect(SignPresenter::ACTION_IN, [
-			'backlink' => $this->storeRequest(),
-		]);
+		$this->actionRedirect(SignPresenter::linkIn(
+			$this->storeRequest(),
+		));
 	}
 
 	protected function beforeRender(): void

@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Front\Sign\Presenter;
 
 use OriCMF\UI\Front\Base\Presenter\BaseFrontPresenter;
+use OriCMF\UI\Presenter\ActionLink;
 use OriCMF\UI\Presenter\NoLogin;
 
 /**
@@ -19,9 +20,21 @@ class SignPresenter extends BaseFrontPresenter
 	/** @persistent */
 	public string $backlink = '';
 
+	public static function linkIn(string $backlink = ''): ActionLink
+	{
+		return new ActionLink(self::ACTION_IN, [
+			'backlink' => $backlink,
+		]);
+	}
+
 	public function actionIn(): void
 	{
 
+	}
+
+	public static function linkOut(): ActionLink
+	{
+		return new ActionLink(self::ACTION_OUT);
 	}
 
 	public function actionOut(): void

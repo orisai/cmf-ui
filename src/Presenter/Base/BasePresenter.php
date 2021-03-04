@@ -14,6 +14,7 @@ use OriCMF\UI\Admin\Auth\AdminFirewall;
 use OriCMF\UI\Control\Document\DocumentControl;
 use OriCMF\UI\Control\Document\DocumentFactory;
 use OriCMF\UI\Front\Auth\FrontFirewall;
+use OriCMF\UI\Presenter\ActionLink;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
 use OriCMF\UI\Template\Locator\PresenterTemplateLocator;
 use Orisai\Exceptions\Logic\InvalidState;
@@ -104,6 +105,14 @@ abstract class BasePresenter extends Presenter
 	protected function createComponentDocument(): DocumentControl
 	{
 		return $this->documentFactory->create();
+	}
+
+	/**
+	 * @return never-returns
+	 */
+	protected function actionRedirect(ActionLink $link): void
+	{
+		$this->redirect($link->getDestination(), $link->getArguments());
 	}
 
 	/**
