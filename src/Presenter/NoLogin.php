@@ -10,6 +10,11 @@ use OriCMF\UI\Presenter\Base\BasePresenter;
 trait NoLogin
 {
 
+	protected function isLoginRequired(): bool
+	{
+		return false;
+	}
+
 	protected function checkUserIsLoggedIn(): void
 	{
 		// Disables login requirements

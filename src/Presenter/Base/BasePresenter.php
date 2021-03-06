@@ -75,10 +75,14 @@ abstract class BasePresenter extends Presenter
 	{
 		parent::startup();
 
-		$this->checkUserIsLoggedIn();
+		if ($this->isLoginRequired()) {
+			$this->checkUserIsLoggedIn();
+		}
 	}
 
 	abstract protected function checkUserIsLoggedIn(): void;
+
+	abstract protected function isLoginRequired(): bool;
 
 	protected function beforeRender(): void
 	{

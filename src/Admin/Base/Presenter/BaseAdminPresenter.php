@@ -10,6 +10,11 @@ abstract class BaseAdminPresenter extends BasePresenter
 
 	public const LAYOUT_PATH = __DIR__ . '/templates/@layout.latte';
 
+	protected function isLoginRequired(): bool
+	{
+		return true;
+	}
+
 	protected function checkUserIsLoggedIn(): void
 	{
 		if ($this->adminFirewall->isLoggedIn()) {
@@ -24,6 +29,17 @@ abstract class BaseAdminPresenter extends BasePresenter
 		$this->actionRedirect(SignPresenter::linkIn(
 			$this->storeRequest(),
 		));
+	}
+
+	public function handleLogout(): void
+	{
+		$this->adminFirewall->logout();
+
+		if (!$this->isLoginRequired()) {
+			$this->redirect('this');
+		} else {
+			$this->actionRedirect(SignPresenter::linkIn());
+		}
 	}
 
 	protected function beforeRender(): void
