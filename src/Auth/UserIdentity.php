@@ -25,7 +25,7 @@ final class UserIdentity extends StringIdentity
 	{
 		$roles = array_map(
 			static fn (Role $role): string => $role->name,
-			$user->person->roles->getIterator()->fetchAll(),
+			$user->roles->getIterator()->fetchAll(),
 		);
 
 		return new self($user->id, $roles);
