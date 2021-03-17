@@ -10,7 +10,7 @@ use function array_map;
 final class UserIdentity extends StringIdentity
 {
 
-	private ?self $parentIdentity;
+	private ?UserIdentity $parentIdentity;
 
 	/**
 	 * @param array<string> $roles
@@ -31,10 +31,7 @@ final class UserIdentity extends StringIdentity
 		return new self($user->id, $roles);
 	}
 
-	/**
-	 * @return UserIdentity|null
-	 */
-	public function getParentIdentity(): ?self
+	public function getParentIdentity(): ?UserIdentity
 	{
 		return $this->parentIdentity;
 	}
