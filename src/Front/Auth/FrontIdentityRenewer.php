@@ -6,6 +6,7 @@ use OriCMF\Core\User\UserRepository;
 use OriCMF\UI\Auth\UserIdentity;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
+use function assert;
 
 /**
  * @phpstan-implements IdentityRenewer<UserIdentity>
@@ -22,13 +23,20 @@ final class FrontIdentityRenewer implements IdentityRenewer
 
 	public function renewIdentity(Identity $identity): ?UserIdentity
 	{
+		assert($identity instanceof UserIdentity);
+
 		$user = $this->userRepository->getById($identity->getId());
 
 		if ($user === null) {
 			return null;
 		}
 
-		return UserIdentity::fromUser($user);
+		$parentIdentity = $identity->getParentIdentity();
+		$newParentIdentity = $parentIdentity !== null
+			? $this->renewIdentity($parentIdentity)
+			: null;
+
+		return UserIdentity::fromUser($user, $newParentIdentity);
 	}
 
 }
