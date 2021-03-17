@@ -7,6 +7,7 @@ use OriCMF\UI\Auth\UserIdentity;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
 use Orisai\Auth\Authorization\PermissionAuthorizer;
+use function assert;
 
 /**
  * @phpstan-implements IdentityRenewer<UserIdentity>
@@ -25,19 +26,26 @@ final class AdminIdentityRenewer implements IdentityRenewer
 
 	public function renewIdentity(Identity $identity): ?UserIdentity
 	{
+		assert($identity instanceof UserIdentity);
+
 		$user = $this->userRepository->getById($identity->getId());
 
 		if ($user === null) {
 			return null;
 		}
 
-		$identity = UserIdentity::fromUser($user);
+		$parentIdentity = $identity->getParentIdentity();
+		$newParentIdentity = $parentIdentity !== null
+			? $this->renewIdentity($parentIdentity)
+			: null;
 
-		if (!$this->authorizer->isAllowed($identity, 'administration.entry')) {
+		$newIdentity = UserIdentity::fromUser($user, $newParentIdentity);
+
+		if (!$this->authorizer->isAllowed($newIdentity, 'administration.entry')) {
 			return null;
 		}
 
-		return $identity;
+		return $newIdentity;
 	}
 
 }
