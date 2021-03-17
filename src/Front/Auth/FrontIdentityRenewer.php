@@ -31,12 +31,12 @@ final class FrontIdentityRenewer implements IdentityRenewer
 			return null;
 		}
 
-		$parentIdentity = $identity->getParentIdentity();
-		$newParentIdentity = $parentIdentity !== null
-			? $this->renewIdentity($parentIdentity)
+		$puppeteer = $identity->getPuppeteer();
+		$newPuppeteer = $puppeteer !== null
+			? $this->renewIdentity($puppeteer)
 			: null;
 
-		return UserIdentity::fromUser($user, $newParentIdentity);
+		return UserIdentity::fromUser($user, $newPuppeteer);
 	}
 
 }

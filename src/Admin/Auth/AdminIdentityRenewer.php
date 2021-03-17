@@ -34,12 +34,12 @@ final class AdminIdentityRenewer implements IdentityRenewer
 			return null;
 		}
 
-		$parentIdentity = $identity->getParentIdentity();
-		$newParentIdentity = $parentIdentity !== null
-			? $this->renewIdentity($parentIdentity)
+		$puppeteer = $identity->getPuppeteer();
+		$newPuppeteer = $puppeteer !== null
+			? $this->renewIdentity($puppeteer)
 			: null;
 
-		$newIdentity = UserIdentity::fromUser($user, $newParentIdentity);
+		$newIdentity = UserIdentity::fromUser($user, $newPuppeteer);
 
 		if (!$this->authorizer->isAllowed($newIdentity, 'administration.entry')) {
 			return null;

@@ -45,15 +45,15 @@ abstract class BaseUIFirewall extends BaseFirewall
 		return $this->userRepository->getByIdChecked($identity->getId());
 	}
 
-	public function getParentUser(): ?User
+	public function getPuppeteer(): ?User
 	{
-		$parent = $this->getIdentity()->getParentIdentity();
+		$puppeteer = $this->getIdentity()->getPuppeteer();
 
-		if ($parent === null) {
+		if ($puppeteer === null) {
 			return null;
 		}
 
-		return $this->userRepository->getByIdChecked($parent->getId());
+		return $this->userRepository->getByIdChecked($puppeteer->getId());
 	}
 
 }

@@ -11,35 +11,35 @@ use function array_map;
 final class UserIdentity extends StringIdentity
 {
 
-	private ?UserIdentity $parentIdentity;
+	private ?UserIdentity $puppeteer;
 
 	/**
 	 * @param array<string> $roles
 	 */
-	public function __construct(string $id, array $roles, ?UserIdentity $parentIdentity = null)
+	public function __construct(string $id, array $roles, ?UserIdentity $puppeteer = null)
 	{
 		parent::__construct($id, $roles);
-		$this->parentIdentity = $parentIdentity;
+		$this->puppeteer = $puppeteer;
 
-		if ($parentIdentity !== null && $parentIdentity->getParentIdentity() !== null) {
+		if ($puppeteer !== null && $puppeteer->getPuppeteer() !== null) {
 			throw InvalidState::create()
 				->withMessage('Parent identity is not allowed to have its own parent identity.');
 		}
 	}
 
-	public static function fromUser(User $user, ?UserIdentity $parentIdentity = null): self
+	public static function fromUser(User $user, ?UserIdentity $puppeteer = null): self
 	{
 		$roles = array_map(
 			static fn (Role $role): string => $role->name,
 			$user->roles->getIterator()->fetchAll(),
 		);
 
-		return new self($user->id, $roles, $parentIdentity);
+		return new self($user->id, $roles, $puppeteer);
 	}
 
-	public function getParentIdentity(): ?UserIdentity
+	public function getPuppeteer(): ?UserIdentity
 	{
-		return $this->parentIdentity;
+		return $this->puppeteer;
 	}
 
 	/**
@@ -48,7 +48,7 @@ final class UserIdentity extends StringIdentity
 	public function __serialize(): array
 	{
 		$data = parent::__serialize();
-		$data['parentIdentity'] = $this->parentIdentity;
+		$data['puppeteer'] = $this->puppeteer;
 
 		return $data;
 	}
@@ -59,7 +59,7 @@ final class UserIdentity extends StringIdentity
 	public function __unserialize(array $data): void
 	{
 		parent::__unserialize($data);
-		$this->parentIdentity = $data['parentIdentity'];
+		$this->puppeteer = $data['puppeteer'];
 	}
 
 }
