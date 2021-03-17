@@ -27,14 +27,14 @@ final class UserIdentity extends StringIdentity
 		}
 	}
 
-	public static function fromUser(User $user): self
+	public static function fromUser(User $user, ?UserIdentity $parentIdentity = null): self
 	{
 		$roles = array_map(
 			static fn (Role $role): string => $role->name,
 			$user->roles->getIterator()->fetchAll(),
 		);
 
-		return new self($user->id, $roles);
+		return new self($user->id, $roles, $parentIdentity);
 	}
 
 	public function getParentIdentity(): ?UserIdentity
