@@ -5,6 +5,7 @@ namespace OriCMF\UI\Auth;
 use OriCMF\Core\Role\Role;
 use OriCMF\Core\User\User;
 use Orisai\Auth\Authentication\StringIdentity;
+use Orisai\Exceptions\Logic\InvalidState;
 use function array_map;
 
 final class UserIdentity extends StringIdentity
@@ -19,6 +20,11 @@ final class UserIdentity extends StringIdentity
 	{
 		parent::__construct($id, $roles);
 		$this->parentIdentity = $parentIdentity;
+
+		if ($parentIdentity !== null && $parentIdentity->getParentIdentity() !== null) {
+			throw InvalidState::create()
+				->withMessage('Parent identity is not allowed to have its own parent identity.');
+		}
 	}
 
 	public static function fromUser(User $user): self
