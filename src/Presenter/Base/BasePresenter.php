@@ -71,7 +71,7 @@ abstract class BasePresenter extends Presenter
 		$this->templateLocator = $templateLocator;
 	}
 
-	protected function startup(): void
+	final protected function startup(): void
 	{
 		parent::startup();
 
