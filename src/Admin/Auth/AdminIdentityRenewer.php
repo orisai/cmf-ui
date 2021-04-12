@@ -6,7 +6,7 @@ use OriCMF\Core\User\UserRepository;
 use OriCMF\UI\Auth\UserIdentity;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
-use Orisai\Auth\Authorization\PermissionAuthorizer;
+use Orisai\Auth\Authorization\PrivilegeAuthorizer;
 use function assert;
 
 /**
@@ -16,9 +16,9 @@ final class AdminIdentityRenewer implements IdentityRenewer
 {
 
 	private UserRepository $userRepository;
-	private PermissionAuthorizer $authorizer;
+	private PrivilegeAuthorizer $authorizer;
 
-	public function __construct(UserRepository $userRepository, PermissionAuthorizer $authorizer)
+	public function __construct(UserRepository $userRepository, PrivilegeAuthorizer $authorizer)
 	{
 		$this->userRepository = $userRepository;
 		$this->authorizer = $authorizer;

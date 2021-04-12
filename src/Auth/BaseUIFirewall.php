@@ -7,12 +7,13 @@ use OriCMF\Core\User\User;
 use OriCMF\Core\User\UserRepository;
 use Orisai\Auth\Authentication\BaseFirewall;
 use Orisai\Auth\Authentication\Exception\NotLoggedIn;
+use Orisai\Auth\Authentication\Firewall;
 use Orisai\Auth\Authentication\IdentityRenewer;
 use Orisai\Auth\Authentication\LoginStorage;
 use Orisai\Auth\Authorization\Authorizer;
 
 /**
- * @phpstan-extends BaseFirewall<UserIdentity>
+ * @phpstan-extends BaseFirewall<UserIdentity, Firewall>
  * @method login(UserIdentity $identity)
  * @method renewIdentity(UserIdentity $identity)
  * @method UserIdentity getIdentity()

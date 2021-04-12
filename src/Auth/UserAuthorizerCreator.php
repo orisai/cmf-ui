@@ -3,7 +3,7 @@
 namespace OriCMF\UI\Auth;
 
 use OriCMF\Core\Role\RoleRepository;
-use Orisai\Auth\Authorization\PermissionAuthorizer;
+use Orisai\Auth\Authorization\PrivilegeAuthorizer;
 
 final class UserAuthorizerCreator
 {
@@ -18,9 +18,9 @@ final class UserAuthorizerCreator
 		$this->roleRepository = $roleRepository;
 	}
 
-	public function create(): PermissionAuthorizer
+	public function create(): PrivilegeAuthorizer
 	{
-		$authorizer = new PermissionAuthorizer();
+		$authorizer = new PrivilegeAuthorizer();
 
 		foreach ($this->privileges as $privilege) {
 			$authorizer->addPrivilege($privilege);
