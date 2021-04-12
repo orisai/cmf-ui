@@ -21,7 +21,7 @@ abstract class BaseFrontPresenter extends BasePresenter
 			return;
 		}
 
-		$expired = $this->frontFirewall->getExpiredLogins()[0] ?? null;
+		$expired = $this->frontFirewall->getLastExpiredLogin();
 		if ($expired !== null && $expired->getLogoutReason() === $this->frontFirewall::REASON_INACTIVITY) {
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
