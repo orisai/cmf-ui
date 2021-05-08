@@ -31,7 +31,7 @@ final class ErrorPresenter extends BaseFrontPresenter
 		}
 	}
 
-	public function renderDefault(?Throwable $throwable = null): void
+	public function renderDefault(Throwable|null $throwable = null): void
 	{
 		if ($throwable === null) {
 			// Direct access, act as user error

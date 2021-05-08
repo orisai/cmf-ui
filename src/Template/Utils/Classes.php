@@ -5,7 +5,6 @@ namespace OriCMF\UI\Template\Utils;
 use ReflectionClass;
 use function class_parents;
 use function dirname;
-use function get_class;
 
 /**
  * @internal
@@ -20,7 +19,7 @@ final class Classes
 	 */
 	public static function getClassList(object $object): array
 	{
-		$called = get_class($object);
+		$called = $object::class;
 
 		return [$called] + class_parents($called);
 	}

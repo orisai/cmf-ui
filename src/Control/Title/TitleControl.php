@@ -11,13 +11,13 @@ use function sprintf;
 class TitleControl extends BaseControl
 {
 
-	private ?string $site = null;
+	private string|null $site = null;
 
-	private ?string $module = null;
+	private string|null $module = null;
 
-	private ?string $main = null;
+	private string|null $main = null;
 
-	private ?string $separator = '-';
+	private string|null $separator = '-';
 
 	private bool $revert = false;
 
@@ -51,7 +51,7 @@ class TitleControl extends BaseControl
 		return $this;
 	}
 
-	public function getMain(): ?string
+	public function getMain(): string|null
 	{
 		return $this->main;
 	}
@@ -78,7 +78,7 @@ class TitleControl extends BaseControl
 		return $this;
 	}
 
-	public function getTitle(): ?string
+	public function getTitle(): string|null
 	{
 		if ($this->site === null && $this->module === null && $this->main === null) {
 			return null;

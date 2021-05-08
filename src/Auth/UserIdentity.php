@@ -11,23 +11,23 @@ use function array_map;
 final class UserIdentity extends StringIdentity
 {
 
-	private ?UserIdentity $puppeteer;
+	private UserIdentity|null $puppeteer;
 
 	/**
 	 * @param array<string> $roles
 	 */
-	public function __construct(string $id, array $roles, ?UserIdentity $puppeteer = null)
+	public function __construct(string $id, array $roles, UserIdentity|null $puppeteer = null)
 	{
 		parent::__construct($id, $roles);
 		$this->puppeteer = $puppeteer;
 
-		if ($puppeteer !== null && $puppeteer->getPuppeteer() !== null) {
+		if ($puppeteer?->getPuppeteer() !== null) {
 			throw InvalidState::create()
 				->withMessage('Parent identity is not allowed to have its own parent identity.');
 		}
 	}
 
-	public static function fromUser(User $user, ?UserIdentity $puppeteer = null): self
+	public static function fromUser(User $user, UserIdentity|null $puppeteer = null): self
 	{
 		$roles = array_map(
 			static fn (Role $role): string => $role->name,
@@ -37,7 +37,7 @@ final class UserIdentity extends StringIdentity
 		return new self($user->id, $roles, $puppeteer);
 	}
 
-	public function getPuppeteer(): ?UserIdentity
+	public function getPuppeteer(): UserIdentity|null
 	{
 		return $this->puppeteer;
 	}

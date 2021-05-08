@@ -13,7 +13,7 @@ use function uasort;
 class IconsControl extends BaseControl
 {
 
-	private ?string $favicon = null;
+	private string|null $favicon = null;
 
 	/** @var array<mixed> */
 	private array $icons = [];
@@ -32,7 +32,7 @@ class IconsControl extends BaseControl
 	 * @param array<string> $sizes
 	 * @return $this
 	 */
-	public function addIcon(string $href, array $sizes = [], ?string $type = null, string $rel = 'icon'): self
+	public function addIcon(string $href, array $sizes = [], string|null $type = null, string $rel = 'icon'): self
 	{
 		$this->icons[] = [
 			'href' => $href,

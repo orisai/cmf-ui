@@ -40,7 +40,7 @@ class HeadControl extends BaseControl
 		MetaFactory $metaFactory,
 		NoScriptFactory $noScriptFactory,
 		TitleFactory $titleFactory,
-		StylesFactory $stylesFactory
+		StylesFactory $stylesFactory,
 	)
 	{
 		$this->iconsFactory = $iconsFactory;

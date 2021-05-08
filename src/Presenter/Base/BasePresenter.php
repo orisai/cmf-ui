@@ -61,7 +61,7 @@ abstract class BasePresenter extends Presenter
 		DocumentFactory $documentFactory,
 		Translator $translator,
 		ApplicationConfig $applicationConfig,
-		PresenterTemplateLocator $templateLocator
+		PresenterTemplateLocator $templateLocator,
 	): void
 	{
 		$this->adminFirewall = $adminFirewall;
@@ -138,7 +138,7 @@ abstract class BasePresenter extends Presenter
 	/**
 	 * @internal
 	 */
-	final public function findLayoutTemplateFile(): ?string
+	final public function findLayoutTemplateFile(): string|null
 	{
 		$layout = $this->getLayout();
 
@@ -185,7 +185,7 @@ abstract class BasePresenter extends Presenter
 	 * @throws BadRequestException
 	 * @throws AbortException
 	 */
-	final public function sendTemplate(?Template $template = null): void
+	final public function sendTemplate(Template|null $template = null): void
 	{
 		$template ??= $this->getTemplate();
 

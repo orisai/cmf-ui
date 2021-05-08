@@ -20,7 +20,7 @@ abstract class BaseControlTemplate extends UITemplate
 	/**
 	 * @param array<mixed> $params
 	 */
-	public function render(?string $file = null, array $params = []): void
+	public function render(string|null $file = null, array $params = []): void
 	{
 		parent::render($this->getFilePath($file), $params);
 	}
@@ -28,7 +28,7 @@ abstract class BaseControlTemplate extends UITemplate
 	/**
 	 * @param array<mixed> $params
 	 */
-	public function renderToString(?string $file = null, array $params = []): string
+	public function renderToString(string|null $file = null, array $params = []): string
 	{
 		return parent::renderToString($this->getFilePath($file), $params);
 	}
@@ -41,7 +41,7 @@ abstract class BaseControlTemplate extends UITemplate
 		$this->templateLocator = $templateLocator;
 	}
 
-	private function getFilePath(?string $file): string
+	private function getFilePath(string|null $file): string
 	{
 		if ($file === null && ($file = $this->getFile()) === null) {
 			return $this->templateLocator->getTemplatePath($this->control, $this->view);

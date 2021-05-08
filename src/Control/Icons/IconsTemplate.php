@@ -9,7 +9,7 @@ final class IconsTemplate extends BaseControlTemplate
 
 	public IconsControl $control;
 
-	public ?string $favicon;
+	public string|null $favicon;
 
 	/** @var array<mixed> */
 	public array $icons;

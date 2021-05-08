@@ -9,6 +9,6 @@ final class TitleTemplate extends BaseControlTemplate
 
 	public TitleControl $control;
 
-	public ?string $title;
+	public string|null $title;
 
 }

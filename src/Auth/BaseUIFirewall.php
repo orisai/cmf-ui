@@ -28,7 +28,7 @@ abstract class BaseUIFirewall extends BaseFirewall
 		LoginStorage $storage,
 		IdentityRenewer $renewer,
 		Authorizer $authorizer,
-		?Clock $clock = null
+		Clock|null $clock = null,
 	)
 	{
 		parent::__construct($storage, $renewer, $authorizer, $clock);
@@ -46,7 +46,7 @@ abstract class BaseUIFirewall extends BaseFirewall
 		return $this->userRepository->getByIdChecked($identity->getId());
 	}
 
-	public function getPuppeteer(): ?User
+	public function getPuppeteer(): User|null
 	{
 		$puppeteer = $this->getIdentity()->getPuppeteer();
 

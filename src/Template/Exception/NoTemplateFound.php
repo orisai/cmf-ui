@@ -4,7 +4,6 @@ namespace OriCMF\UI\Template\Exception;
 
 use Orisai\Exceptions\LogicalException;
 use Webmozart\PathUtil\Path;
-use function get_class;
 use function implode;
 
 final class NoTemplateFound extends LogicalException
@@ -21,7 +20,7 @@ final class NoTemplateFound extends LogicalException
 	 */
 	public static function create(array $triedPaths, object $templatedObject, string $rootDir): self
 	{
-		$templatedClass = get_class($templatedObject);
+		$templatedClass = $templatedObject::class;
 
 		$shortTriedPaths = self::getShortPaths($triedPaths, $rootDir);
 		$inlinePaths = implode("\n", $shortTriedPaths);

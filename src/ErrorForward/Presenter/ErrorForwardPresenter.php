@@ -40,14 +40,14 @@ final class ErrorForwardPresenter extends BasePresenter
 		$this->errorPresenters[] = [$presenter, $regex];
 	}
 
-	public function actionDefault(Throwable $exception, ?Request $request): void
+	public function actionDefault(Throwable $exception, Request|null $request): void
 	{
 		// Log error
 		$this->logger->log(
 			$exception instanceof BadRequestException ? LogLevel::INFO : LogLevel::ERROR,
 			$exception->getMessage(),
 			[
-				'presenter' => $request !== null ? $request->getPresenterName() : 'unknown',
+				'presenter' => $request?->getPresenterName() ?? 'unknown',
 				'exception' => $exception,
 			],
 		);

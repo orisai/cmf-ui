@@ -25,7 +25,7 @@ final class AdminIdentityRenewer implements IdentityRenewer
 		$this->authorizer = $authorizer;
 	}
 
-	public function renewIdentity(Identity $identity): ?UserIdentity
+	public function renewIdentity(Identity $identity): UserIdentity|null
 	{
 		assert($identity instanceof UserIdentity);
 

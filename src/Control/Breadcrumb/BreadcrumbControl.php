@@ -26,7 +26,7 @@ class BreadcrumbControl extends BaseControl
 		return $this;
 	}
 
-	public function addLink(string $title, ?string $uri = null, ?string $icon = null): self
+	public function addLink(string $title, string|null $uri = null, string|null $icon = null): self
 	{
 		$this->links[] = [
 			'title' => $title,

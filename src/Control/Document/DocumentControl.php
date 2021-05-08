@@ -77,7 +77,7 @@ class DocumentControl extends BaseControl
 		$this['head-meta']->addOpenGraph('title', $title);
 	}
 
-	public function getTitle(): ?string
+	public function getTitle(): string|null
 	{
 		return $this['head-title']->getMain();
 	}

@@ -21,7 +21,7 @@ final class FrontIdentityRenewer implements IdentityRenewer
 		$this->userRepository = $userRepository;
 	}
 
-	public function renewIdentity(Identity $identity): ?UserIdentity
+	public function renewIdentity(Identity $identity): UserIdentity|null
 	{
 		assert($identity instanceof UserIdentity);
 
