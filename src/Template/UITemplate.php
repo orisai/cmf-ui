@@ -14,6 +14,7 @@ abstract class UITemplate extends Template
 {
 
 	public AdminFirewall $adminFirewall;
+
 	public FrontFirewall $frontFirewall;
 
 	public string $baseUrl;

@@ -10,6 +10,7 @@ final class BodyTemplate extends BaseControlTemplate
 	public BodyControl $control;
 
 	public string $bodyStart;
+
 	public string $bodyEnd;
 
 }

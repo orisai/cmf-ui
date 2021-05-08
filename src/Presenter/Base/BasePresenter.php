@@ -44,6 +44,7 @@ abstract class BasePresenter extends Presenter
 	public const LAYOUT_PATH = __DIR__ . '/templates/@layout.latte';
 
 	protected AdminFirewall $adminFirewall;
+
 	protected FrontFirewall $frontFirewall;
 
 	private DocumentFactory $documentFactory;

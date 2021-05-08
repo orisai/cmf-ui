@@ -16,6 +16,7 @@ final class AdminIdentityRenewer implements IdentityRenewer
 {
 
 	private UserRepository $userRepository;
+
 	private PrivilegeAuthorizer $authorizer;
 
 	public function __construct(UserRepository $userRepository, PrivilegeAuthorizer $authorizer)

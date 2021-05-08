@@ -23,10 +23,15 @@ class HeadControl extends BaseControl
 {
 
 	private IconsFactory $iconsFactory;
+
 	private LinksFactory $linksFactory;
+
 	private MetaFactory $metaFactory;
+
 	private NoScriptFactory $noScriptFactory;
+
 	private TitleFactory $titleFactory;
+
 	private StylesFactory $stylesFactory;
 
 	public function __construct(

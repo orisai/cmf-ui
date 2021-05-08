@@ -28,7 +28,7 @@ class LoginPresenter extends BaseAdminPresenter
 
 	public function actionDefault(): void
 	{
-
+		// Action method
 	}
 
 }

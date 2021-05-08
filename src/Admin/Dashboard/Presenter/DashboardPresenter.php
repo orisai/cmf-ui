@@ -15,7 +15,7 @@ final class DashboardPresenter extends BaseAdminPresenter
 
 	public function actionDefault(): void
 	{
-
+		// Action method
 	}
 
 	public static function linkDefault(): ActionLink

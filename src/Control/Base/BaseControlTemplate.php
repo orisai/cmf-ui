@@ -9,6 +9,7 @@ abstract class BaseControlTemplate extends UITemplate
 {
 
 	private ControlTemplateLocator $templateLocator;
+
 	private string $view = 'default';
 
 	public function setView(string $view): void

@@ -12,8 +12,11 @@ class TitleControl extends BaseControl
 {
 
 	private ?string $site = null;
+
 	private ?string $module = null;
+
 	private ?string $main = null;
+
 	private ?string $separator = '-';
 
 	private bool $revert = false;

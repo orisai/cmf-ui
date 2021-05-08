@@ -15,7 +15,7 @@ final class HomepagePresenter extends BaseFrontPresenter
 
 	public function actionDefault(): void
 	{
-
+		// Action method
 	}
 
 	public static function linkDefault(): ActionLink

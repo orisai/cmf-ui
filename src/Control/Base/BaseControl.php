@@ -25,6 +25,7 @@ abstract class BaseControl extends Control
 {
 
 	protected Translator $translator;
+
 	protected FormFactory $formFactory;
 
 	public function setBase(Translator $translator, FormFactory $formFactory): void
