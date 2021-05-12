@@ -2,6 +2,7 @@
 
 namespace OriCMF\UI\Front\Login\Presenter;
 
+use Nette\Application\Attributes\Persistent;
 use OriCMF\UI\Front\Base\Presenter\BaseFrontPresenter;
 use OriCMF\UI\Presenter\ActionLink;
 use OriCMF\UI\Presenter\NoLogin;
@@ -16,7 +17,7 @@ class LoginPresenter extends BaseFrontPresenter
 
 	public const ACTION_DEFAULT = ':OriCMF:UI:Front:Login:default';
 
-	/** @persistent */
+	#[Persistent]
 	public string $backlink = '';
 
 	public static function linkDefault(string $backlink = ''): ActionLink
