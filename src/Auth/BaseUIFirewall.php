@@ -11,6 +11,7 @@ use Orisai\Auth\Authentication\Firewall;
 use Orisai\Auth\Authentication\IdentityRenewer;
 use Orisai\Auth\Authentication\LoginStorage;
 use Orisai\Auth\Authorization\Authorizer;
+use Orisai\Auth\Authorization\PolicyManager;
 
 /**
  * @phpstan-extends BaseFirewall<UserIdentity, Firewall>
@@ -28,10 +29,11 @@ abstract class BaseUIFirewall extends BaseFirewall
 		LoginStorage $storage,
 		IdentityRenewer $renewer,
 		Authorizer $authorizer,
+		PolicyManager $policyManager,
 		Clock|null $clock = null,
 	)
 	{
-		parent::__construct($storage, $renewer, $authorizer, $clock);
+		parent::__construct($storage, $renewer, $authorizer, $policyManager, $clock);
 		$this->userRepository = $userRepository;
 	}
 

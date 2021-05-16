@@ -110,6 +110,11 @@ services:
 	ori.ui.auth.loginStorage:
 		factory: Orisai\Auth\Bridge\NetteHttp\SessionLoginStorage
 		autowired: false
+	ori.ui.auth.policyManager:
+		factory: Orisai\Auth\Bridge\NetteDI\LazyPolicyManager
+		arguments:
+			servicesMap: []
+		autowired: false
 	ori.ui.auth.authorizerCreator:
 		factory: OriCMF\UI\Auth\UserAuthorizerCreator
 		autowired: false
@@ -131,6 +136,7 @@ services:
 			storage: @ori.ui.auth.loginStorage
 			renewer: @ori.ui.admin.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
+			policyManager: @ori.ui.auth.policyManager
 
 	ori.ui.admin.dashboard.presenter:
 		factory: OriCMF\UI\Admin\Dashboard\Presenter\DashboardPresenter
@@ -149,6 +155,7 @@ services:
 			storage: @ori.ui.auth.loginStorage
 			renewer: @ori.ui.front.auth.identityRenewer
 			authorizer: @ori.ui.auth.authorizer
+			policyManager: @ori.ui.auth.policyManager
 
 	ori.ui.front.error.presenter:
 		factory: OriCMF\UI\Front\Error\Presenter\ErrorPresenter
