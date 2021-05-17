@@ -44,6 +44,11 @@ final class AdminIdentityRenewer implements IdentityRenewer
 			? $this->renewIdentity($puppeteer)
 			: null;
 
+		// User was controlled by puppeteer which is not available anymore
+		if ($puppeteer !== null && $newPuppeteer === null) {
+			return null;
+		}
+
 		$newIdentity = UserIdentity::fromUser($user, $newPuppeteer);
 
 		if (!$this->authorizer->isAllowed($newIdentity, 'administration.entry')) {

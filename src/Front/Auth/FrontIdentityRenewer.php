@@ -40,6 +40,11 @@ final class FrontIdentityRenewer implements IdentityRenewer
 			? $this->renewIdentity($puppeteer)
 			: null;
 
+		// User was controlled by puppeteer which is not available anymore
+		if ($puppeteer !== null && $newPuppeteer === null) {
+			return null;
+		}
+
 		return UserIdentity::fromUser($user, $newPuppeteer);
 	}
 
