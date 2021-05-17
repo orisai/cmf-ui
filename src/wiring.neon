@@ -2,7 +2,6 @@ extensions:
 	application: Nette\Bridges\ApplicationDI\ApplicationExtension(%debugMode%)
 	http: Nette\Bridges\HttpDI\HttpExtension(%consoleMode%)
 	latte: Nette\Bridges\ApplicationDI\LatteExtension(%buildDir%/latte, %debugMode%)
-	localization: Orisai\Localization\Bridge\NetteDI\LocalizationExtension
 	routing: OriCMF\UI\Routing\DI\RoutingExtension
 	session: Nette\Bridges\HttpDI\SessionExtension(%debugMode%, %consoleMode%)
 	- OriCMF\UI\Template\DI\UITemplateExtension
@@ -39,9 +38,6 @@ latte:
 	strictTypes: true
 
 localization:
-	debug:
-		newMessages: %debugMode%
-		panel: %debug.panels.localization%
 	loaders:
 		- factory: Orisai\Localization\Resource\FileLoader
 		  arguments:
@@ -53,7 +49,6 @@ parameters:
 	debug:
 		panels:
 			latte: false
-			localization: false
 			ui:
 				application: false
 				routing: false

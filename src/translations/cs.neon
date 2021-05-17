@@ -12,7 +12,7 @@ ori.ui.login.logout.reason.inactivity: 'Byl(a) jste odhlášen(a) z důvodu neak
 
 
 #
-# Errors
+# Error
 #
 
 ori.ui.httpError.homeButton: Zpátky na domovskou stránku

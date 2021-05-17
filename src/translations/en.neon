@@ -12,7 +12,7 @@ ori.ui.login.logout.reason.inactivity: 'You have been signed out due to inactivi
 
 
 #
-# Errors
+# Error
 #
 
 ori.ui.httpError.homeButton: Back to homepage
