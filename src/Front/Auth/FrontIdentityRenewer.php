@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Front\Auth;
 
 use OriCMF\Core\User\UserRepository;
+use OriCMF\Core\User\UserState;
 use OriCMF\UI\Auth\UserIdentity;
 use Orisai\Auth\Authentication\Identity;
 use Orisai\Auth\Authentication\IdentityRenewer;
@@ -25,7 +26,10 @@ final class FrontIdentityRenewer implements IdentityRenewer
 	{
 		assert($identity instanceof UserIdentity);
 
-		$user = $this->userRepository->getById($identity->getId());
+		$user = $this->userRepository->getBy([
+			'id' => $identity->getId(),
+			'state' => UserState::ACTIVE(),
+		]);
 
 		if ($user === null) {
 			return null;
