@@ -22,7 +22,7 @@ final class ErrorPresenter extends BaseFrontPresenter
 
 	private const SUPPORTED_VIEWS = [400, 403, 404, 410, 500];
 
-	public function actionDefault(): void
+	public function action(): void
 	{
 		// Note error in ajax request
 		if ($this->isAjax()) {
@@ -31,7 +31,7 @@ final class ErrorPresenter extends BaseFrontPresenter
 		}
 	}
 
-	public function renderDefault(Throwable|null $throwable = null): void
+	public function render(Throwable|null $throwable = null): void
 	{
 		if ($throwable === null) {
 			// Direct access, act as user error

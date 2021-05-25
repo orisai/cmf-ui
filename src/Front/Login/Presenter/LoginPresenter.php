@@ -20,14 +20,14 @@ class LoginPresenter extends BaseFrontPresenter
 	#[Persistent]
 	public string $backlink = '';
 
-	public static function linkDefault(string $backlink = ''): ActionLink
+	public static function createLink(string $backlink = ''): ActionLink
 	{
 		return new ActionLink(self::ACTION_DEFAULT, [
 			'backlink' => $backlink,
 		]);
 	}
 
-	public function actionDefault(): void
+	public function action(): void
 	{
 		// Action method
 	}

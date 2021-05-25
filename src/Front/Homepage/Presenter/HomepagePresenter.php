@@ -13,12 +13,12 @@ final class HomepagePresenter extends BaseFrontPresenter
 
 	public const ACTION_DEFAULT = ':OriCMF:UI:Front:Homepage:default';
 
-	public function actionDefault(): void
+	public function action(): void
 	{
 		// Action method
 	}
 
-	public static function linkDefault(): ActionLink
+	public static function createLink(): ActionLink
 	{
 		return new ActionLink(self::ACTION_DEFAULT);
 	}

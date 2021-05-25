@@ -26,7 +26,7 @@ abstract class BaseAdminPresenter extends BasePresenter
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
-		$this->actionRedirect(LoginPresenter::linkDefault(
+		$this->actionRedirect(LoginPresenter::createLink(
 			$this->storeRequest(),
 		));
 	}
@@ -38,7 +38,7 @@ abstract class BaseAdminPresenter extends BasePresenter
 		if (!$this->isLoginRequired()) {
 			$this->redirect('this');
 		} else {
-			$this->actionRedirect(LoginPresenter::linkDefault());
+			$this->actionRedirect(LoginPresenter::createLink());
 		}
 	}
 

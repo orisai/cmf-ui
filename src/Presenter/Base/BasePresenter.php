@@ -121,6 +121,16 @@ abstract class BasePresenter extends Presenter
 		$this->redirect($link->getDestination(), $link->getArguments());
 	}
 
+	public static function formatActionMethod(string $action): string
+	{
+		return parent::formatActionMethod($action !== 'default' ? $action : '');
+	}
+
+	public static function formatRenderMethod(string $view): string
+	{
+		return parent::formatRenderMethod($view !== 'default' ? $view : '');
+	}
+
 	/**
 	 * @return array<string>
 	 * @throws NotImplemented
