@@ -21,7 +21,7 @@ abstract class UITemplate extends Template
 	public string $baseUrl;
 
 	/** @var array<mixed> */
-	public array $flashes = [];
+	public array $flashes;
 
 	final public function __construct(Engine $latte)
 	{
