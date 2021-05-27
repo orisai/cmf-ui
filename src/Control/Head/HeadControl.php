@@ -22,33 +22,15 @@ use OriCMF\UI\Control\Title\TitleFactory;
 class HeadControl extends BaseControl
 {
 
-	private IconsFactory $iconsFactory;
-
-	private LinksFactory $linksFactory;
-
-	private MetaFactory $metaFactory;
-
-	private NoScriptFactory $noScriptFactory;
-
-	private TitleFactory $titleFactory;
-
-	private StylesFactory $stylesFactory;
-
 	public function __construct(
-		IconsFactory $iconsFactory,
-		LinksFactory $linksFactory,
-		MetaFactory $metaFactory,
-		NoScriptFactory $noScriptFactory,
-		TitleFactory $titleFactory,
-		StylesFactory $stylesFactory,
+		private IconsFactory $iconsFactory,
+		private LinksFactory $linksFactory,
+		private MetaFactory $metaFactory,
+		private NoScriptFactory $noScriptFactory,
+		private TitleFactory $titleFactory,
+		private StylesFactory $stylesFactory,
 	)
 	{
-		$this->iconsFactory = $iconsFactory;
-		$this->linksFactory = $linksFactory;
-		$this->metaFactory = $metaFactory;
-		$this->noScriptFactory = $noScriptFactory;
-		$this->titleFactory = $titleFactory;
-		$this->stylesFactory = $stylesFactory;
 	}
 
 	public function render(): void

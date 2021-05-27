@@ -22,10 +22,8 @@ use Orisai\Auth\Authorization\PolicyManager;
 abstract class BaseUIFirewall extends BaseFirewall
 {
 
-	private UserRepository $userRepository;
-
 	public function __construct(
-		UserRepository $userRepository,
+		private UserRepository $userRepository,
 		LoginStorage $storage,
 		IdentityRenewer $renewer,
 		Authorizer $authorizer,
@@ -34,7 +32,6 @@ abstract class BaseUIFirewall extends BaseFirewall
 	)
 	{
 		parent::__construct($storage, $renewer, $authorizer, $policyManager, $clock);
-		$this->userRepository = $userRepository;
 	}
 
 	public function getUser(): User

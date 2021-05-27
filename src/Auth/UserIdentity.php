@@ -11,15 +11,12 @@ use function array_map;
 final class UserIdentity extends StringIdentity
 {
 
-	private UserIdentity|null $puppeteer;
-
 	/**
 	 * @param array<string> $roles
 	 */
-	public function __construct(string $id, array $roles, UserIdentity|null $puppeteer = null)
+	public function __construct(string $id, array $roles, private UserIdentity|null $puppeteer = null)
 	{
 		parent::__construct($id, $roles);
-		$this->puppeteer = $puppeteer;
 
 		if ($puppeteer?->getPuppeteer() !== null) {
 			throw InvalidState::create()

@@ -8,15 +8,10 @@ use function str_starts_with;
 final class ActionLink
 {
 
-	private string $destination;
-
-	/** @var array<mixed> */
-	private array $args;
-
 	/**
 	 * @param array<string, mixed> $args
 	 */
-	public function __construct(string $destination, array $args = [])
+	public function __construct(private string $destination, private array $args = [])
 	{
 		if (!str_starts_with($destination, ':') && !str_starts_with($destination, '//:')) {
 			throw InvalidArgument::create()
@@ -27,9 +22,6 @@ Format: [[[module:]presenter:]action | signal!] [#fragment]
 TXT,
 				);
 		}
-
-		$this->destination = $destination;
-		$this->args = $args;
 	}
 
 	public function getDestination(): string

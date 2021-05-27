@@ -16,14 +16,8 @@ use function assert;
 final class AdminIdentityRenewer implements IdentityRenewer
 {
 
-	private UserRepository $userRepository;
-
-	private PrivilegeAuthorizer $authorizer;
-
-	public function __construct(UserRepository $userRepository, PrivilegeAuthorizer $authorizer)
+	public function __construct(private UserRepository $userRepository, private PrivilegeAuthorizer $authorizer)
 	{
-		$this->userRepository = $userRepository;
-		$this->authorizer = $authorizer;
 	}
 
 	public function renewIdentity(Identity $identity): UserIdentity|null

@@ -14,11 +14,8 @@ use function sprintf;
 final class PresenterFactoryCallback
 {
 
-	private Container $container;
-
-	public function __construct(Container $container)
+	public function __construct(private Container $container)
 	{
-		$this->container = $container;
 	}
 
 	public function __invoke(string $class): IPresenter

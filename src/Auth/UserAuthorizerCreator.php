@@ -8,14 +8,11 @@ use Orisai\Auth\Authorization\PrivilegeAuthorizer;
 final class UserAuthorizerCreator
 {
 
-	private RoleRepository $roleRepository;
-
 	/** @var array<string> */
 	private array $privileges;
 
-	public function __construct(RoleRepository $roleRepository)
+	public function __construct(private RoleRepository $roleRepository)
 	{
-		$this->roleRepository = $roleRepository;
 	}
 
 	public function create(): PrivilegeAuthorizer

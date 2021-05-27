@@ -10,13 +10,10 @@ use Orisai\Localization\Translator;
 final class FormFactory
 {
 
-	private Translator $translator;
-
 	private bool $initialized = false;
 
-	public function __construct(Translator $translator)
+	public function __construct(private Translator $translator)
 	{
-		$this->translator = $translator;
 	}
 
 	private function initialize(): void

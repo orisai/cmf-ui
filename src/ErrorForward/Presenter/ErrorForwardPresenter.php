@@ -17,17 +17,14 @@ final class ErrorForwardPresenter extends BasePresenter
 
 	use NoLogin;
 
-	private LoggerInterface $logger;
-
 	private string $defaultErrorPresenter = ErrorPresenter::ACTION_DEFAULT;
 
 	/** @var array<mixed> */
 	private array $errorPresenters = [];
 
-	public function __construct(LoggerInterface $logger)
+	public function __construct(private LoggerInterface $logger)
 	{
 		parent::__construct();
-		$this->logger = $logger;
 	}
 
 	public function setDefaultErrorPresenter(string $presenter): void

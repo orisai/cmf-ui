@@ -10,11 +10,8 @@ use function is_file;
 final class PresenterTemplateLocator
 {
 
-	private string $rootDir;
-
-	public function __construct(string $rootDir)
+	public function __construct(private string $rootDir)
 	{
-		$this->rootDir = $rootDir;
 	}
 
 	/**
