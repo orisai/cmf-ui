@@ -36,7 +36,6 @@ abstract class BaseControl extends Control
 
 	protected function createTemplate(): BaseControlTemplate
 	{
-		//TODO - $this->templateFactory
 		$templateFactory = $this->getPresenter()->getTemplateFactory();
 		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
 		assert($template instanceof BaseControlTemplate);
