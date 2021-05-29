@@ -167,7 +167,7 @@ abstract class BasePresenter extends Presenter
 		try {
 			return $this->templateLocator->getLayoutTemplatePath($this, $layout);
 		} catch (NoTemplateFound $exception) {
-			$inlinePaths = implode('\', \'', $exception->getTriedPaths());
+			$inlinePaths = implode('\', \'', $exception->getShortTriedPaths());
 
 			throw new FileNotFoundException(
 				"Layout not found. None of the following templates exists: {$inlinePaths}",
@@ -203,7 +203,7 @@ abstract class BasePresenter extends Presenter
 			try {
 				$file = $this->templateLocator->getActionTemplatePath($this, $this->getView());
 			} catch (NoTemplateFound $exception) {
-				$inlinePaths = implode('\', \'', $exception->getTriedPaths());
+				$inlinePaths = implode('\', \'', $exception->getShortTriedPaths());
 
 				throw new BadRequestException(
 					"Page not found. None of the following templates exists: {$inlinePaths}",
