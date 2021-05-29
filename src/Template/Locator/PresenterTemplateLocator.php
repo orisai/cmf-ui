@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Template\Locator;
 
 use Nette\Application\UI\Presenter;
+use OriCMF\UI\Presenter\Base\BasePresenter;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
 use OriCMF\UI\Template\Utils\Classes;
 use function array_pop;
@@ -45,7 +46,7 @@ final class PresenterTemplateLocator
 		$baseFileName = preg_replace('#Presenter$#', '', array_pop($parts));
 
 		foreach ($classes as $class) {
-			if ($class === Presenter::class) {
+			if ($class === Presenter::class || $class === BasePresenter::class) {
 				break;
 			}
 

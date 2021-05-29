@@ -3,6 +3,7 @@
 namespace OriCMF\UI\Template\Locator;
 
 use Nette\Application\UI\Control;
+use OriCMF\UI\Control\Base\BaseControl;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
 use OriCMF\UI\Template\Utils\Classes;
 use function array_pop;
@@ -31,7 +32,7 @@ final class ControlTemplateLocator
 		$baseFileName = preg_replace('#Control$#', '', array_pop($parts));
 
 		foreach ($classes as $class) {
-			if ($class === Control::class) {
+			if ($class === Control::class || $class === BaseControl::class) {
 				break;
 			}
 
