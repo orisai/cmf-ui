@@ -7,7 +7,6 @@ use Nette\Http\IResponse;
 use OriCMF\UI\Admin\Base\Presenter\BaseAdminPresenter;
 use Throwable;
 use function in_array;
-use function sprintf;
 
 /**
  * @property-read ErrorTemplate $template
@@ -17,7 +16,7 @@ final class ErrorPresenter extends BaseAdminPresenter
 
 	public const ACTION_DEFAULT = ':OriCMF:UI:Admin:Error:default';
 
-	protected const SUPPORTED_VIEWS = [400, 403, 404, 410, 500];
+	protected const SUPPORTED_CODES = [400, 403, 404, 410, 500];
 
 	public function action(): void
 	{
@@ -33,31 +32,36 @@ final class ErrorPresenter extends BaseAdminPresenter
 		if ($throwable === null) {
 			// Direct access, act as user error
 			$code = IResponse::S404_NOT_FOUND;
-			$view = 404;
+			$is4xx = true;
 		} elseif ($throwable instanceof BadRequestException) {
-			// Use view requested by BadRequestException or generic 404/500
+			// User error
 			$code = $throwable->getCode();
-			if (in_array($code, self::SUPPORTED_VIEWS, true)) {
-				$view = $code;
-			} else {
-				$view = $code >= 400 && $code <= 499 ? 404 : 500;
+			$is4xx = $code >= 400 && $code <= 499;
+
+			if (!in_array($code, self::SUPPORTED_CODES, true)) {
+				$code = $is4xx
+					? 400
+					: 500;
 			}
 		} else {
-			// Use generic view for real error
+			// Real error
 			$code = IResponse::S500_INTERNAL_SERVER_ERROR;
-			$view = 500;
+			$is4xx = false;
 		}
 
-		// Set page title
+		$view = $is4xx ? '4xx' : '5xx';
+
+		$t = $this->translator->toFunction();
+
+		$this->template->title = $title = $t("ori.ui.httpError.$view.title");
+		$this->template->message = $t("ori.ui.httpError.$view.message");
+
 		$this['document']->setTitle(
-			$this->translator->translate(sprintf(
-				'ori.ui.httpError.%s.title',
-				$view,
-			)),
+			$this->translator->translate($title),
 		);
 
 		$this->getHttpResponse()->setCode($code);
-		$this->setView((string) $view);
+		$this->setView($view);
 	}
 
 	protected function configureCanonicalUrl(): void
