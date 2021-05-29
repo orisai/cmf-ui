@@ -41,7 +41,7 @@ use function sprintf;
 abstract class BasePresenter extends Presenter
 {
 
-	public const LAYOUT_PATH = __DIR__ . '/templates/@layout.latte';
+	public const LAYOUT_PATH = __DIR__ . '/@layout.latte';
 
 	protected AdminFirewall $adminFirewall;
 
@@ -123,12 +123,12 @@ abstract class BasePresenter extends Presenter
 
 	public static function formatActionMethod(string $action): string
 	{
-		return parent::formatActionMethod($action !== 'default' ? $action : '');
+		return parent::formatActionMethod($action !== self::DEFAULT_ACTION ? $action : '');
 	}
 
 	public static function formatRenderMethod(string $view): string
 	{
-		return parent::formatRenderMethod($view !== 'default' ? $view : '');
+		return parent::formatRenderMethod($view !== self::DEFAULT_ACTION ? $view : '');
 	}
 
 	/**

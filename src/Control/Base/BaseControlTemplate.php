@@ -10,7 +10,7 @@ abstract class BaseControlTemplate extends UITemplate
 
 	private ControlTemplateLocator $templateLocator;
 
-	private string $view = 'default';
+	private string $view = ControlTemplateLocator::DEFAULT_VIEW_NAME;
 
 	public function setView(string $view): void
 	{

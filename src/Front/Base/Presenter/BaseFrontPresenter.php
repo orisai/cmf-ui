@@ -8,7 +8,7 @@ use OriCMF\UI\Presenter\Base\BasePresenter;
 abstract class BaseFrontPresenter extends BasePresenter
 {
 
-	public const LAYOUT_PATH = __DIR__ . '/templates/@layout.latte';
+	public const LAYOUT_PATH = __DIR__ . '/@layout.latte';
 
 	protected function isLoginRequired(): bool
 	{
