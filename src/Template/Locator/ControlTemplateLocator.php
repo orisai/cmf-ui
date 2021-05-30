@@ -5,9 +5,7 @@ namespace OriCMF\UI\Template\Locator;
 use Nette\Application\UI\Control;
 use OriCMF\UI\Control\Base\BaseControl;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
-use OriCMF\UI\Template\Utils\Classes;
-use function array_pop;
-use function explode;
+use Orisai\Utils\Classes;
 use function is_file;
 use function preg_replace;
 
@@ -25,11 +23,10 @@ final class ControlTemplateLocator
 	 */
 	public function getTemplatePath(Control $control, string $viewName): string
 	{
-		$classes = Classes::getClassList($control);
+		$classes = Classes::getClassList($control::class);
 		$triedPaths = [];
 
-		$parts = explode('\\', $control::class);
-		$baseFileName = preg_replace('#Control$#', '', array_pop($parts));
+		$baseFileName = preg_replace('#Control$#', '', Classes::getShortName($control::class));
 
 		foreach ($classes as $class) {
 			if ($class === Control::class || $class === BaseControl::class) {

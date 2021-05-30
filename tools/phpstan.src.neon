@@ -6,8 +6,6 @@ parameters:
 	resultCachePath: %currentWorkingDirectory%/var/tools/PHPStan/resultCache.src.php
 
 	ignoreErrors:
-		# Hard to care about never-happening errors
-		- '#(.+)\|false(.+)#'
 		# Intentionally broken
 		- message: '#^Return type (.+) of method (.+)\:\:setTranslator\(\) should be covariant with (.+)#'
 		  path: ../src/Form/Form.php

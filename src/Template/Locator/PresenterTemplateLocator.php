@@ -5,9 +5,7 @@ namespace OriCMF\UI\Template\Locator;
 use Nette\Application\UI\Presenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
-use OriCMF\UI\Template\Utils\Classes;
-use function array_pop;
-use function explode;
+use Orisai\Utils\Classes;
 use function is_file;
 use function preg_replace;
 
@@ -39,11 +37,10 @@ final class PresenterTemplateLocator
 	 */
 	private function getPath(Presenter $presenter, string $viewName): string
 	{
-		$classes = Classes::getClassList($presenter);
+		$classes = Classes::getClassList($presenter::class);
 		$triedPaths = [];
 
-		$parts = explode('\\', $presenter::class);
-		$baseFileName = preg_replace('#Presenter$#', '', array_pop($parts));
+		$baseFileName = preg_replace('#Presenter$#', '', Classes::getShortName($presenter::class));
 
 		foreach ($classes as $class) {
 			if ($class === Presenter::class || $class === BasePresenter::class) {
