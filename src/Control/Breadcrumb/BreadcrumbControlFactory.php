@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Breadcrumb;
 
-interface BreadcrumbFactory
+interface BreadcrumbControlFactory
 {
 
 	public function create(): BreadcrumbControl;

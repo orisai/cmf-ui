@@ -5,9 +5,9 @@ namespace OriCMF\UI\Control\Document;
 use Nette\Utils\Html;
 use OriCMF\UI\Control\Base\BaseControl;
 use OriCMF\UI\Control\Body\BodyControl;
-use OriCMF\UI\Control\Body\BodyFactory;
+use OriCMF\UI\Control\Body\BodyControlFactory;
 use OriCMF\UI\Control\Head\HeadControl;
-use OriCMF\UI\Control\Head\HeadFactory;
+use OriCMF\UI\Control\Head\HeadControlFactory;
 
 /**
  * @property-read DocumentTemplate $template
@@ -17,7 +17,7 @@ class DocumentControl extends BaseControl
 
 	private Html $element;
 
-	public function __construct(private HeadFactory $headFactory, private BodyFactory $bodyFactory)
+	public function __construct(private HeadControlFactory $headFactory, private BodyControlFactory $bodyFactory)
 	{
 		$this->element = Html::el('html');
 	}

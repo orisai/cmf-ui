@@ -71,25 +71,25 @@ services:
 
 	# Document basic controls
 	ori.ui.control.body.factory:
-		implement: OriCMF\UI\Control\Body\BodyFactory
+		implement: OriCMF\UI\Control\Body\BodyControlFactory
 	ori.ui.control.breadcrumb.factory:
-		implement: OriCMF\UI\Control\Breadcrumb\BreadcrumbFactory
+		implement: OriCMF\UI\Control\Breadcrumb\BreadcrumbControlFactory
 	ori.ui.control.document.factory:
-		implement: OriCMF\UI\Control\Document\DocumentFactory
+		implement: OriCMF\UI\Control\Document\DocumentControlFactory
 	ori.ui.control.head.factory:
-		implement: OriCMF\UI\Control\Head\HeadFactory
+		implement: OriCMF\UI\Control\Head\HeadControlFactory
 	ori.ui.control.icons.factory:
-		implement: OriCMF\UI\Control\Icons\IconsFactory
+		implement: OriCMF\UI\Control\Icons\IconsControlFactory
 	ori.ui.control.links.factory:
-		implement: OriCMF\UI\Control\Links\LinksFactory
+		implement: OriCMF\UI\Control\Links\LinksControlFactory
 	ori.ui.control.meta.factory:
-		implement: OriCMF\UI\Control\Meta\MetaFactory
+		implement: OriCMF\UI\Control\Meta\MetaControlFactory
 	ori.ui.control.noscript.factory:
-		implement: OriCMF\UI\Control\NoScript\NoScriptFactory
+		implement: OriCMF\UI\Control\NoScript\NoScriptControlFactory
 	ori.ui.control.styles.factory:
-		implement: OriCMF\UI\Control\Styles\StylesFactory
+		implement: OriCMF\UI\Control\Styles\StylesControlFactory
 	ori.ui.control.title.factory:
-		implement: OriCMF\UI\Control\Title\TitleFactory
+		implement: OriCMF\UI\Control\Title\TitleControlFactory
 
 	# Forms
 	ori.ui.form.factory:

@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Meta;
 
-interface MetaFactory
+interface MetaControlFactory
 {
 
 	public function create(): MetaControl;

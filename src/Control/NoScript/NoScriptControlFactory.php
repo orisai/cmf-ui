@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\NoScript;
 
-interface NoScriptFactory
+interface NoScriptControlFactory
 {
 
 	public function create(): NoScriptControl;

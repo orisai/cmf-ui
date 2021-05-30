@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Head;
 
-interface HeadFactory
+interface HeadControlFactory
 {
 
 	public function create(): HeadControl;

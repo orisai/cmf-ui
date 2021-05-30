@@ -4,17 +4,17 @@ namespace OriCMF\UI\Control\Head;
 
 use OriCMF\UI\Control\Base\BaseControl;
 use OriCMF\UI\Control\Icons\IconsControl;
-use OriCMF\UI\Control\Icons\IconsFactory;
+use OriCMF\UI\Control\Icons\IconsControlFactory;
 use OriCMF\UI\Control\Links\LinksControl;
-use OriCMF\UI\Control\Links\LinksFactory;
+use OriCMF\UI\Control\Links\LinksControlFactory;
 use OriCMF\UI\Control\Meta\MetaControl;
-use OriCMF\UI\Control\Meta\MetaFactory;
+use OriCMF\UI\Control\Meta\MetaControlFactory;
 use OriCMF\UI\Control\NoScript\NoScriptControl;
-use OriCMF\UI\Control\NoScript\NoScriptFactory;
+use OriCMF\UI\Control\NoScript\NoScriptControlFactory;
 use OriCMF\UI\Control\Styles\StylesControl;
-use OriCMF\UI\Control\Styles\StylesFactory;
+use OriCMF\UI\Control\Styles\StylesControlFactory;
 use OriCMF\UI\Control\Title\TitleControl;
-use OriCMF\UI\Control\Title\TitleFactory;
+use OriCMF\UI\Control\Title\TitleControlFactory;
 
 /**
  * @property-read HeadTemplate $template
@@ -23,12 +23,12 @@ class HeadControl extends BaseControl
 {
 
 	public function __construct(
-		private IconsFactory $iconsFactory,
-		private LinksFactory $linksFactory,
-		private MetaFactory $metaFactory,
-		private NoScriptFactory $noScriptFactory,
-		private TitleFactory $titleFactory,
-		private StylesFactory $stylesFactory,
+		private IconsControlFactory $iconsFactory,
+		private LinksControlFactory $linksFactory,
+		private MetaControlFactory $metaFactory,
+		private NoScriptControlFactory $noScriptFactory,
+		private TitleControlFactory $titleFactory,
+		private StylesControlFactory $stylesFactory,
 	)
 	{
 	}

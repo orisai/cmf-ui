@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Icons;
 
-interface IconsFactory
+interface IconsControlFactory
 {
 
 	public function create(): IconsControl;

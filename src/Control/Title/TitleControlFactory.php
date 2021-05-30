@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Title;
 
-interface TitleFactory
+interface TitleControlFactory
 {
 
 	public function create(): TitleControl;

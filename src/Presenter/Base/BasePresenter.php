@@ -12,7 +12,7 @@ use Nette\FileNotFoundException;
 use OriCMF\Core\Config\ApplicationConfig;
 use OriCMF\UI\Admin\Auth\AdminFirewall;
 use OriCMF\UI\Control\Document\DocumentControl;
-use OriCMF\UI\Control\Document\DocumentFactory;
+use OriCMF\UI\Control\Document\DocumentControlFactory;
 use OriCMF\UI\Front\Auth\FrontFirewall;
 use OriCMF\UI\Presenter\ActionLink;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
@@ -47,7 +47,7 @@ abstract class BasePresenter extends Presenter
 
 	protected FrontFirewall $frontFirewall;
 
-	private DocumentFactory $documentFactory;
+	private DocumentControlFactory $documentFactory;
 
 	protected Translator $translator;
 
@@ -58,7 +58,7 @@ abstract class BasePresenter extends Presenter
 	public function injectBase(
 		AdminFirewall $adminFirewall,
 		FrontFirewall $frontFirewall,
-		DocumentFactory $documentFactory,
+		DocumentControlFactory $documentFactory,
 		Translator $translator,
 		ApplicationConfig $applicationConfig,
 		PresenterTemplateLocator $templateLocator,

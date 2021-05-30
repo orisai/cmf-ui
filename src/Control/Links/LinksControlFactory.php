@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Links;
 
-interface LinksFactory
+interface LinksControlFactory
 {
 
 	public function create(): LinksControl;

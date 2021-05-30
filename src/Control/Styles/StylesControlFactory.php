@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Styles;
 
-interface StylesFactory
+interface StylesControlFactory
 {
 
 	public function create(): StylesControl;

@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Document;
 
-interface DocumentFactory
+interface DocumentControlFactory
 {
 
 	public function create(): DocumentControl;

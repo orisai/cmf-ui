@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Control\Body;
 
-interface BodyFactory
+interface BodyControlFactory
 {
 
 	public function create(): BodyControl;
