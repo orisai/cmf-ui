@@ -59,7 +59,7 @@ parameters:
 routing:
 	debug: %debug.panels.ui.routing%
 	providers:
-		ori.core: OriCMF\UI\Routing\CoreRouterProvider
+		ori.core: OriCMF\UI\Routing\CmfUIRouterProvider
 
 services:
 	# Presenter factory
