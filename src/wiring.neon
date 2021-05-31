@@ -108,7 +108,7 @@ services:
 	ori.ui.auth.policyManager:
 		factory: Orisai\Auth\Bridge\NetteDI\LazyPolicyManager
 		arguments:
-			servicesMap: []
+			serviceMap: []
 		autowired: false
 	ori.ui.auth.authorizerCreator:
 		factory: OriCMF\UI\Auth\UserAuthorizerCreator
