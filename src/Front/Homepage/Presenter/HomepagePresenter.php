@@ -20,7 +20,7 @@ final class HomepagePresenter extends BaseFrontPresenter
 
 	public static function createLink(): ActionLink
 	{
-		return new ActionLink(self::ACTION_DEFAULT);
+		return ActionLink::fromMapping(self::ACTION_DEFAULT);
 	}
 
 }

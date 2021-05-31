@@ -11,17 +11,37 @@ final class ActionLink
 	/**
 	 * @param array<string, mixed> $args
 	 */
-	public function __construct(private string $destination, private array $args = [])
+	private function __construct(private string $destination, private array $args = [])
 	{
-		if (!str_starts_with($destination, ':') && !str_starts_with($destination, '//:')) {
+	}
+
+	/**
+	 * @param array<string, mixed> $args
+	 */
+	public static function fromClass(string $presenter, string $action = 'default', array $args = []): self
+	{
+		return new self(":$presenter:$action", $args);
+	}
+
+	/**
+	 * @param array<string, mixed> $args
+	 */
+	public static function fromMapping(string $destination, array $args = []): self
+	{
+		if (
+			!str_starts_with($destination, ':')
+			&& !str_starts_with($destination, '//:')
+		) {
 			throw InvalidArgument::create()
 				->withMessage(
 					<<<'TXT'
-Destination must be absolute, relative links and "this" are forbidden.
+Destination must be an absolute link. Relative links and "this" are forbidden.
 Format: [[[module:]presenter:]action | signal!] [#fragment]
 TXT,
 				);
 		}
+
+		return new self($destination, $args);
 	}
 
 	public function getDestination(): string

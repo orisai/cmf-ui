@@ -22,7 +22,7 @@ class LoginPresenter extends BaseFrontPresenter
 
 	public static function createLink(string $backlink = ''): ActionLink
 	{
-		return new ActionLink(self::ACTION_DEFAULT, [
+		return ActionLink::fromMapping(self::ACTION_DEFAULT, [
 			'backlink' => $backlink,
 		]);
 	}

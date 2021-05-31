@@ -20,7 +20,7 @@ final class DashboardPresenter extends BaseAdminPresenter
 
 	public static function createLink(): ActionLink
 	{
-		return new ActionLink(self::ACTION_DEFAULT);
+		return ActionLink::fromMapping(self::ACTION_DEFAULT);
 	}
 
 }
