@@ -1,11 +1,11 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\ErrorForward\Presenter;
+namespace OriCMF\UI\ErrorForward;
 
 use Nette\Application\BadRequestException;
 use Nette\Application\Request;
 use Nette\Utils\Strings;
-use OriCMF\UI\Front\Error\Presenter\ErrorPresenter;
+use OriCMF\UI\Front\Error\ErrorPresenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use OriCMF\UI\Presenter\NoLogin;
 use Psr\Log\LoggerInterface;

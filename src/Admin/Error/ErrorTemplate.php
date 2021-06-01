@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\Admin\Error\Presenter;
+namespace OriCMF\UI\Admin\Error;
 
 use OriCMF\UI\Presenter\Base\BasePresenterTemplate;
 

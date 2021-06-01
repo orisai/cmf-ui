@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\Front\Login\Presenter;
+namespace OriCMF\UI\Front\Login;
 
 use Nette\Application\Attributes\Persistent;
 use OriCMF\UI\Front\Base\Presenter\BaseFrontPresenter;

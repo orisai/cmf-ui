@@ -2,7 +2,7 @@
 
 namespace OriCMF\UI\Admin\Base\Presenter;
 
-use OriCMF\UI\Admin\Login\Presenter\LoginPresenter;
+use OriCMF\UI\Admin\Login\LoginPresenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 
 abstract class BaseAdminPresenter extends BasePresenter
