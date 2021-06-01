@@ -2,6 +2,7 @@
 
 namespace OriCMF\UI\Presenter;
 
+use Nette\Application\UI\Presenter;
 use Orisai\Exceptions\Logic\InvalidArgument;
 use function str_starts_with;
 
@@ -16,6 +17,7 @@ final class ActionLink
 	}
 
 	/**
+	 * @param class-string<Presenter> $presenter
 	 * @param array<string, mixed> $args
 	 */
 	public static function fromClass(string $presenter, string $action = 'default', array $args = []): self
