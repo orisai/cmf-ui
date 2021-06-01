@@ -15,14 +15,12 @@ class LoginPresenter extends BaseFrontPresenter
 
 	use NoLogin;
 
-	public const ACTION_DEFAULT = ':OriCMF:UI:Front:Login:default';
-
 	#[Persistent]
 	public string $backlink = '';
 
 	public static function createLink(string $backlink = ''): ActionLink
 	{
-		return ActionLink::fromMapping(self::ACTION_DEFAULT, [
+		return ActionLink::fromClass(self::class, args: [
 			'backlink' => $backlink,
 		]);
 	}

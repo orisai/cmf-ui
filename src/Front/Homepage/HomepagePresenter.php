@@ -11,8 +11,6 @@ use OriCMF\UI\Presenter\ActionLink;
 final class HomepagePresenter extends BaseFrontPresenter
 {
 
-	public const ACTION_DEFAULT = ':OriCMF:UI:Front:Homepage:default';
-
 	public function action(): void
 	{
 		// Action method
@@ -20,7 +18,7 @@ final class HomepagePresenter extends BaseFrontPresenter
 
 	public static function createLink(): ActionLink
 	{
-		return ActionLink::fromMapping(self::ACTION_DEFAULT);
+		return ActionLink::fromClass(self::class);
 	}
 
 }

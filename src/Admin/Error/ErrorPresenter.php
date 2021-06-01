@@ -14,8 +14,6 @@ use function in_array;
 final class ErrorPresenter extends BaseAdminPresenter
 {
 
-	public const ACTION_DEFAULT = ':OriCMF:UI:Admin:Error:default';
-
 	protected const SUPPORTED_CODES = [400, 403, 404, 410, 500];
 
 	public function action(): void

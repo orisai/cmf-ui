@@ -18,13 +18,13 @@ final class CmfUIRouterProvider implements RouterProvider
 	{
 		$router = new RouteList();
 
-		$router->add(new SimplifiedRoute('/admin/login', AdminLoginPresenter::ACTION_DEFAULT));
-		$router->add(new SimplifiedRoute('/admin/error', AdminErrorPresenter::ACTION_DEFAULT));
-		$router->add(new SimplifiedRoute('/admin', DashboardPresenter::ACTION_DEFAULT));
+		$router->add(new ClassRoute('/admin/login', AdminLoginPresenter::class));
+		$router->add(new ClassRoute('/admin/error', AdminErrorPresenter::class));
+		$router->add(new ClassRoute('/admin', DashboardPresenter::class));
 
-		$router->add(new SimplifiedRoute('/login', FrontLoginPresenter::ACTION_DEFAULT));
-		$router->add(new SimplifiedRoute('/error', FrontErrorPresenter::ACTION_DEFAULT));
-		$router->add(new SimplifiedRoute('/', HomepagePresenter::ACTION_DEFAULT));
+		$router->add(new ClassRoute('/login', FrontLoginPresenter::class));
+		$router->add(new ClassRoute('/error', FrontErrorPresenter::class));
+		$router->add(new ClassRoute('/', HomepagePresenter::class));
 
 		return $router;
 	}

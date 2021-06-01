@@ -5,7 +5,7 @@ namespace OriCMF\UI\ErrorForward;
 use Nette\Application\BadRequestException;
 use Nette\Application\Request;
 use Nette\Utils\Strings;
-use OriCMF\UI\Front\Error\ErrorPresenter;
+use OriCMF\UI\Front\Error\ErrorPresenter as FrontErrorPresenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use OriCMF\UI\Presenter\NoLogin;
 use Psr\Log\LoggerInterface;
@@ -17,7 +17,7 @@ final class ErrorForwardPresenter extends BasePresenter
 
 	use NoLogin;
 
-	private string $defaultErrorPresenter = ErrorPresenter::ACTION_DEFAULT;
+	private string $defaultErrorPresenter = FrontErrorPresenter::class;
 
 	/** @var array<mixed> */
 	private array $errorPresenters = [];

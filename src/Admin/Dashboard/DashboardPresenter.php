@@ -11,8 +11,6 @@ use OriCMF\UI\Presenter\ActionLink;
 final class DashboardPresenter extends BaseAdminPresenter
 {
 
-	public const ACTION_DEFAULT = ':OriCMF:UI:Admin:Dashboard:default';
-
 	public function action(): void
 	{
 		// Action method
@@ -20,7 +18,7 @@ final class DashboardPresenter extends BaseAdminPresenter
 
 	public static function createLink(): ActionLink
 	{
-		return ActionLink::fromMapping(self::ACTION_DEFAULT);
+		return ActionLink::fromClass(self::class);
 	}
 
 }
