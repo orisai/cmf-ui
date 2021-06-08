@@ -99,7 +99,7 @@ services:
 	ori.ui.errorForward.presenter:
 		factory: OriCMF\UI\ErrorForward\ErrorForwardPresenter
 		setup:
-			- addErrorPresenter(':OriCMF:UI:Admin:Error:default', '#.*:(Admin|Administration):.*#')
+			- addErrorPresenter(':OriCMF\UI\Admin\Error\ErrorPresenter:default', '#(.*)(\\|:)(Admin|Administration)(\\|:)(.*)#')
 
 	# Auth
 	ori.ui.auth.loginStorage:

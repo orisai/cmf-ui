@@ -5,6 +5,7 @@ namespace OriCMF\UI\Admin\Error;
 use Nette\Application\BadRequestException;
 use Nette\Http\IResponse;
 use OriCMF\UI\Admin\Base\Presenter\BaseAdminPresenter;
+use OriCMF\UI\ErrorForward\ErrorForwardPresenter;
 use Throwable;
 use function in_array;
 
@@ -13,8 +14,6 @@ use function in_array;
  */
 final class ErrorPresenter extends BaseAdminPresenter
 {
-
-	protected const SUPPORTED_CODES = [400, 403, 404, 410, 500];
 
 	public function action(): void
 	{
@@ -36,7 +35,7 @@ final class ErrorPresenter extends BaseAdminPresenter
 			$code = $throwable->getCode();
 			$is4xx = $code >= 400 && $code <= 499;
 
-			if (!in_array($code, self::SUPPORTED_CODES, true)) {
+			if (!in_array($code, ErrorForwardPresenter::MESSAGE_SUPPORTED_CODES, true)) {
 				$code = $is4xx
 					? 400
 					: 500;
@@ -47,19 +46,17 @@ final class ErrorPresenter extends BaseAdminPresenter
 			$is4xx = false;
 		}
 
-		$view = $is4xx ? '4xx' : '5xx';
-
 		$t = $this->translator->toFunction();
 
-		$this->template->title = $title = $t("ori.ui.httpError.$view.title");
-		$this->template->message = $t("ori.ui.httpError.$view.message");
+		$this->template->title = $title = $t("ori.ui.httpError.$code.title");
+		$this->template->message = $t("ori.ui.httpError.$code.message");
 
 		$this['document']->setTitle(
 			$this->translator->translate($title),
 		);
 
 		$this->getHttpResponse()->setCode($code);
-		$this->setView($view);
+		$this->setView($is4xx ? '4xx' : '5xx');
 	}
 
 	protected function configureCanonicalUrl(): void

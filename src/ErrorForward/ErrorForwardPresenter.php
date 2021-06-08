@@ -17,9 +17,15 @@ final class ErrorForwardPresenter extends BasePresenter
 
 	use NoLogin;
 
-	private string $defaultErrorPresenter = FrontErrorPresenter::class;
+	// Codes which are translated and shown to user
+	public const MESSAGE_SUPPORTED_CODES = [400, 403, 404, 410, 500];
 
-	/** @var array<mixed> */
+	private string $defaultErrorPresenter = ':' . FrontErrorPresenter::class . ':default';
+
+	/**
+	 * @var array<array<string>>
+	 * @phpstan-var array<array{string, string}>
+	 */
 	private array $errorPresenters = [];
 
 	public function __construct(private LoggerInterface $logger)
