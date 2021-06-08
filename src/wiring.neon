@@ -9,7 +9,7 @@ extensions:
 application:
 	catchExceptions: %catchExceptions.ui%
 	debugger: %debug.panels.ui.application%
-	errorPresenter: OriCMF:UI:ErrorForward
+	errorPresenter: OriCMF\UI\Error\ErrorForwardPresenter
 	mapping:
 		*: ['', *, *\*Presenter]
 	scanComposer: false
@@ -97,7 +97,7 @@ services:
 
 	# Error forwaring
 	ori.ui.errorForward.presenter:
-		factory: OriCMF\UI\ErrorForward\ErrorForwardPresenter
+		factory: OriCMF\UI\Error\ErrorForwardPresenter
 		setup:
 			- addErrorPresenter(':OriCMF\UI\Admin\Error\ErrorPresenter:default', '#(.*)(\\|:)(Admin|Administration)(\\|:)(.*)#')
 

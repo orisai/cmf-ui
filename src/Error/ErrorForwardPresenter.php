@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace OriCMF\UI\ErrorForward;
+namespace OriCMF\UI\Error;
 
 use Nette\Application\BadRequestException;
 use Nette\Application\Request;
