@@ -20,7 +20,7 @@ class LoginPresenter extends BaseAdminPresenter
 
 	public static function createLink(string $backlink = ''): ActionLink
 	{
-		return ActionLink::fromClass(self::class, args: [
+		return ActionLink::fromClass(self::class, [
 			'backlink' => $backlink,
 		]);
 	}

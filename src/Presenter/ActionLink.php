@@ -20,7 +20,7 @@ final class ActionLink
 	 * @param class-string<Presenter> $presenter
 	 * @param array<string, mixed> $args
 	 */
-	public static function fromClass(string $presenter, string $action = 'default', array $args = []): self
+	public static function fromClass(string $presenter, array $args = [], string $action = 'default'): self
 	{
 		return new self(":$presenter:$action", $args);
 	}
