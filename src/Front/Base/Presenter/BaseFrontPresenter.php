@@ -2,6 +2,7 @@
 
 namespace OriCMF\UI\Front\Base\Presenter;
 
+use OriCMF\UI\Front\Auth\FrontFirewall;
 use OriCMF\UI\Front\Login\LoginPresenter;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 
@@ -10,6 +11,13 @@ abstract class BaseFrontPresenter extends BasePresenter
 
 	public const LAYOUT_PATH = __DIR__ . '/@layout.latte';
 
+	public FrontFirewall $firewall;
+
+	public function injectFront(FrontFirewall $firewall): void
+	{
+		$this->firewall = $firewall;
+	}
+
 	protected function isLoginRequired(): bool
 	{
 		return true;
@@ -17,12 +25,12 @@ abstract class BaseFrontPresenter extends BasePresenter
 
 	protected function checkUserIsLoggedIn(): void
 	{
-		if ($this->frontFirewall->isLoggedIn()) {
+		if ($this->firewall->isLoggedIn()) {
 			return;
 		}
 
-		$expired = $this->frontFirewall->getLastExpiredLogin();
-		if ($expired !== null && $expired->getLogoutReason() === $this->frontFirewall::REASON_INACTIVITY) {
+		$expired = $this->firewall->getLastExpiredLogin();
+		if ($expired !== null && $expired->getLogoutReason() === $this->firewall::REASON_INACTIVITY) {
 			$this->flashMessage($this->translator->translate('ori.ui.login.logout.reason.inactivity'));
 		}
 
@@ -33,13 +41,18 @@ abstract class BaseFrontPresenter extends BasePresenter
 
 	public function handleLogout(): void
 	{
-		$this->frontFirewall->logout();
+		$this->firewall->logout();
 
 		if (!$this->isLoginRequired()) {
 			$this->redirect('this');
 		} else {
 			$this->actionRedirect(LoginPresenter::createLink());
 		}
+	}
+
+	public function getFirewall(): FrontFirewall
+	{
+		return $this->firewall;
 	}
 
 	protected function beforeRender(): void

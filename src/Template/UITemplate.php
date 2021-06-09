@@ -4,8 +4,7 @@ namespace OriCMF\UI\Template;
 
 use Latte\Engine;
 use Nette\Bridges\ApplicationLatte\Template;
-use OriCMF\UI\Admin\Auth\AdminFirewall;
-use OriCMF\UI\Front\Auth\FrontFirewall;
+use OriCMF\UI\Auth\BaseUIFirewall;
 
 /**
  * @method bool isLinkCurrent(string $destination = null, array $args = [])
@@ -14,9 +13,7 @@ use OriCMF\UI\Front\Auth\FrontFirewall;
 abstract class UITemplate extends Template
 {
 
-	public AdminFirewall $adminFirewall;
-
-	public FrontFirewall $frontFirewall;
+	public BaseUIFirewall $firewall;
 
 	public string $baseUrl;
 

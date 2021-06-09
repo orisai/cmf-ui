@@ -4,18 +4,15 @@ namespace OriCMF\UI\Error;
 
 use Nette\Application\BadRequestException;
 use Nette\Application\Request;
+use Nette\Application\UI\Presenter;
 use Nette\Utils\Strings;
 use OriCMF\UI\Front\Error\ErrorPresenter as FrontErrorPresenter;
-use OriCMF\UI\Presenter\Base\BasePresenter;
-use OriCMF\UI\Presenter\NoLogin;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
 use Throwable;
 
-final class ErrorForwardPresenter extends BasePresenter
+final class ErrorForwardPresenter extends Presenter
 {
-
-	use NoLogin;
 
 	// Codes which are translated and shown to user
 	public const MESSAGE_SUPPORTED_CODES = [400, 403, 404, 410, 500];
@@ -43,7 +40,7 @@ final class ErrorForwardPresenter extends BasePresenter
 		$this->errorPresenters[] = [$presenter, $regex];
 	}
 
-	public function action(Throwable $exception, Request|null $request): void
+	public function actionDefault(Throwable $exception, Request|null $request): void
 	{
 		// Log error
 		$this->logger->log(
@@ -66,11 +63,6 @@ final class ErrorForwardPresenter extends BasePresenter
 
 		// Forward to default error presenter
 		$this->forward($this->defaultErrorPresenter, ['throwable' => $exception, 'request' => $request]);
-	}
-
-	protected function configureCanonicalUrl(): void
-	{
-		// Error presenter has no canonical url
 	}
 
 }

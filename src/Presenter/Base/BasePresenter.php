@@ -10,10 +10,9 @@ use Nette\Application\UI\Template;
 use Nette\Bridges\ApplicationLatte\TemplateFactory;
 use Nette\FileNotFoundException;
 use OriCMF\Core\Config\ApplicationConfig;
-use OriCMF\UI\Admin\Auth\AdminFirewall;
+use OriCMF\UI\Auth\BaseUIFirewall;
 use OriCMF\UI\Control\Document\DocumentControl;
 use OriCMF\UI\Control\Document\DocumentControlFactory;
-use OriCMF\UI\Front\Auth\FrontFirewall;
 use OriCMF\UI\Presenter\ActionLink;
 use OriCMF\UI\Template\Exception\NoTemplateFound;
 use OriCMF\UI\Template\Locator\PresenterTemplateLocator;
@@ -43,10 +42,6 @@ abstract class BasePresenter extends Presenter
 
 	public const LAYOUT_PATH = __DIR__ . '/@layout.latte';
 
-	protected AdminFirewall $adminFirewall;
-
-	protected FrontFirewall $frontFirewall;
-
 	private DocumentControlFactory $documentFactory;
 
 	protected Translator $translator;
@@ -56,16 +51,12 @@ abstract class BasePresenter extends Presenter
 	private PresenterTemplateLocator $templateLocator;
 
 	public function injectBase(
-		AdminFirewall $adminFirewall,
-		FrontFirewall $frontFirewall,
 		DocumentControlFactory $documentFactory,
 		Translator $translator,
 		ApplicationConfig $applicationConfig,
 		PresenterTemplateLocator $templateLocator,
 	): void
 	{
-		$this->adminFirewall = $adminFirewall;
-		$this->frontFirewall = $frontFirewall;
 		$this->documentFactory = $documentFactory;
 		$this->translator = $translator;
 		$this->applicationConfig = $applicationConfig;
@@ -85,6 +76,8 @@ abstract class BasePresenter extends Presenter
 
 	abstract protected function isLoginRequired(): bool;
 
+	abstract public function getFirewall(): BaseUIFirewall;
+
 	protected function beforeRender(): void
 	{
 		parent::beforeRender();
@@ -99,6 +92,8 @@ abstract class BasePresenter extends Presenter
 		}
 
 		$this->configureCanonicalUrl();
+
+		$this->template->firewall = $this->getFirewall();
 	}
 
 	protected function configureCanonicalUrl(): void

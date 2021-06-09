@@ -4,6 +4,7 @@ namespace OriCMF\UI\Control\Base;
 
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Template as PlainTemplate;
+use OriCMF\UI\Auth\BaseUIFirewall;
 use OriCMF\UI\Form\FormFactory;
 use OriCMF\UI\Presenter\Base\BasePresenter;
 use Orisai\Exceptions\Logic\InvalidState;
@@ -28,10 +29,17 @@ abstract class BaseControl extends Control
 
 	protected FormFactory $formFactory;
 
+	private BaseUIFirewall|null $firewall = null;
+
 	public function setBase(Translator $translator, FormFactory $formFactory): void
 	{
 		$this->translator = $translator;
 		$this->formFactory = $formFactory;
+	}
+
+	protected function getFirewall(): BaseUIFirewall
+	{
+		return $this->firewall ??= $this->getPresenter()->getFirewall();
 	}
 
 	protected function createTemplate(): BaseControlTemplate
@@ -39,6 +47,8 @@ abstract class BaseControl extends Control
 		$templateFactory = $this->getPresenter()->getTemplateFactory();
 		$template = $templateFactory->createTemplate($this, $this->formatTemplateClass());
 		assert($template instanceof BaseControlTemplate);
+
+		$template->firewall = $this->getFirewall();
 
 		return $template;
 	}
