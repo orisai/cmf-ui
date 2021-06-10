@@ -2,11 +2,6 @@
 
 namespace OriCMF\UI\Presenter;
 
-use OriCMF\UI\Presenter\Base\BasePresenter;
-
-/**
- * @mixin BasePresenter
- */
 trait NoLogin
 {
 
