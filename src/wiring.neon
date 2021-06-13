@@ -86,6 +86,8 @@ services:
 		implement: OriCMF\UI\Control\Meta\MetaControlFactory
 	ori.ui.control.noscript.factory:
 		implement: OriCMF\UI\Control\NoScript\NoScriptControlFactory
+	ori.ui.control.scripts.factory:
+		implement: OriCMF\UI\Control\Scripts\ScriptsControlFactory
 	ori.ui.control.styles.factory:
 		implement: OriCMF\UI\Control\Styles\StylesControlFactory
 	ori.ui.control.title.factory:

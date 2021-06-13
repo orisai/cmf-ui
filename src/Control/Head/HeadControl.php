@@ -11,6 +11,8 @@ use OriCMF\UI\Control\Meta\MetaControl;
 use OriCMF\UI\Control\Meta\MetaControlFactory;
 use OriCMF\UI\Control\NoScript\NoScriptControl;
 use OriCMF\UI\Control\NoScript\NoScriptControlFactory;
+use OriCMF\UI\Control\Scripts\ScriptsControl;
+use OriCMF\UI\Control\Scripts\ScriptsControlFactory;
 use OriCMF\UI\Control\Styles\StylesControl;
 use OriCMF\UI\Control\Styles\StylesControlFactory;
 use OriCMF\UI\Control\Title\TitleControl;
@@ -29,6 +31,7 @@ class HeadControl extends BaseControl
 		private NoScriptControlFactory $noScriptFactory,
 		private TitleControlFactory $titleFactory,
 		private StylesControlFactory $stylesFactory,
+		private ScriptsControlFactory $scriptsFactory,
 	)
 	{
 	}
@@ -66,6 +69,11 @@ class HeadControl extends BaseControl
 	protected function createComponentStyles(): StylesControl
 	{
 		return $this->stylesFactory->create();
+	}
+
+	protected function createComponentScripts(): ScriptsControl
+	{
+		return $this->scriptsFactory->create();
 	}
 
 }
