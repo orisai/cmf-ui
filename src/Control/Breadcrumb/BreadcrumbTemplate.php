@@ -9,7 +9,10 @@ final class BreadcrumbTemplate extends BaseControlTemplate
 
 	public BreadcrumbControl $control;
 
-	/** @var array<mixed> */
+	/**
+	 * @var array<array<mixed>>
+	 * @phpstan-var array<array{title: string, uri: string|null}>
+	 */
 	public array $links;
 
 }

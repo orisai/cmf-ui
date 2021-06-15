@@ -10,28 +10,17 @@ use OriCMF\UI\Control\Base\BaseControl;
 class BreadcrumbControl extends BaseControl
 {
 
-	/** @var array<mixed> */
+	/**
+	 * @var array<array<mixed>>
+	 * @phpstan-var array<array{title: string, uri: string|null}>
+	 */
 	private array $links = [];
 
-	/** @var array<string> */
-	private array $iconsMapping = [];
-
-	/**
-	 * @param array<string> $mapping
-	 */
-	public function addIconsMapping(array $mapping): self
-	{
-		$this->iconsMapping += $mapping;
-
-		return $this;
-	}
-
-	public function addLink(string $title, string|null $uri = null, string|null $icon = null): self
+	public function addLink(string $title, string|null $uri = null): self
 	{
 		$this->links[] = [
 			'title' => $title,
 			'uri' => $uri,
-			'icon' => $this->iconsMapping[$icon] ?? $icon,
 		];
 
 		return $this;
