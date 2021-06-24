@@ -2,6 +2,10 @@
 <!DOCTYPE latte PUBLIC "-//LATTE//Latte plugin XML V0.0.1//EN" ".idea/intellij-latte/xmlSources/Latte.dtd">
 <latte version="1" vendor="orisai/cmf-ui">
 	<tags>
-		<tag name="alink" type="UNPAIRED" arguments="OriCMF\UI\Presenter\ActionLink"/>
+		<tag name="alink" type="UNPAIRED">
+			<arguments>
+				<argument name="link" types="PHP_TYPE" validType="OriCMF\UI\Presenter\ActionLink" required="true"/>
+			</arguments>
+		</tag>
 	</tags>
 </latte>
