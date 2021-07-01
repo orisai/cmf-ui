@@ -2,8 +2,8 @@
 
 namespace OriCMF\UI\Routing;
 
+use Nette\Application\IPresenter;
 use Nette\Application\Routers\Route as OriginalRoute;
-use Nette\Application\UI\Presenter;
 use Nette\Routing\Route;
 
 final class ClassRoute extends Route
@@ -20,9 +20,9 @@ final class ClassRoute extends Route
 	];
 
 	/**
-	 * @param string                  $mask     e.g. 'path/<action>/<id \d{1,3}>'
-	 * @param class-string<Presenter> $class
-	 * @param array<mixed>            $metadata default values or metadata
+	 * @param string                   $mask     e.g. 'path/<action>/<id \d{1,3}>'
+	 * @param class-string<IPresenter> $class
+	 * @param array<mixed>             $metadata default values or metadata
 	 */
 	public function __construct(string $mask, string $class, array $metadata = [])
 	{
