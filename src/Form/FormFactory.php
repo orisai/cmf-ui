@@ -39,7 +39,8 @@ final class FormFactory
 		Validator::$messages[Form::EMAIL] = $this->translator->translate('ori.ui.forms.email');
 		Validator::$messages[Form::URL] = $this->translator->translate('ori.ui.forms.url');
 		Validator::$messages[Form::INTEGER] = $this->translator->translate('ori.ui.forms.integer');
-		Validator::$messages[Form::FLOAT] = $this->translator->translate('ori.ui.forms.float');
+		Validator::$messages[Form::FLOAT] = $this->translator->translate('ori.ui.forms.number');
+		Validator::$messages[Form::NUMERIC] = $this->translator->translate('ori.ui.forms.number');
 		Validator::$messages[Form::MIN] = $this->translator->translate('ori.ui.forms.min');
 		Validator::$messages[Form::MAX] = $this->translator->translate('ori.ui.forms.max');
 		Validator::$messages[Form::RANGE] = $this->translator->translate('ori.ui.forms.range');
