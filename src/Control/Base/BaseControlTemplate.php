@@ -12,9 +12,22 @@ abstract class BaseControlTemplate extends UITemplate
 
 	private string $view = ControlTemplateLocator::DEFAULT_VIEW_NAME;
 
+	private string|null $file = null;
+
 	public function setView(string $view): void
 	{
 		$this->view = $view;
+		$this->file = null;
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function setFile(string $file): static
+	{
+		$this->file = $file;
+
+		return $this;
 	}
 
 	/**
@@ -43,7 +56,7 @@ abstract class BaseControlTemplate extends UITemplate
 
 	private function getFilePath(string|null $file): string
 	{
-		if ($file === null && ($file = $this->getFile()) === null) {
+		if ($file === null && ($file = $this->file) === null) {
 			return $this->templateLocator->getTemplatePath($this->control, $this->view);
 		}
 
