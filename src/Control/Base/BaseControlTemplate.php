@@ -50,4 +50,9 @@ abstract class BaseControlTemplate extends UITemplate
 		return $file;
 	}
 
+	public function __toString(): string
+	{
+		return $this->renderToString();
+	}
+
 }
